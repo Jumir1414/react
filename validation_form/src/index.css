@@ -1,13 +1,109 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  color: #fff;
+}
+
+body {
+  min-height: 100vh;
+  background-color: rgb(119, 116, 116);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem 0.5rem;
+}
+
+section {
+  width: 100%;
+  max-width: 420px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: rgb(91, 109, 145);
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}
+
+input {
+  border: none;
+  outline: none;
+  width: 80%;
+  font-family: 'Nunito', sans-serif;
+  font-size: 18px;
+  padding: 0.25rem;
+}
+
+.textInput,
+.passwordInput {
+  background-color: white;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.2rem;
+  padding: 0.25rem;
+  margin-top: 0.25rem;
+}
+
+.instructions {
+  font-size: 0.5rem;
+  border-radius: 0.5rem;
+  background: #3d3c3c;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  margin-top: 0.15rem;
+}
+
+.instructions>svg {
+  margin-right: 0.25rem;
+}
+
+.valid {
+  color: green;
+  margin-left: 0.25;
+}
+
+.invalid {
+  color: red;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+button {
+  margin-top: 1rem;
+  width: 7rem;
+  height: 1.5rem;
+  background-color: #3d3c3c;
+  color: white;
+  cursor: pointer;
 }

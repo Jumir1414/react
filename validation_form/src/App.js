@@ -1,9 +1,11 @@
 import Register from "./Register";
+import FormContainer from "./component/FormContainer";
 
 function App() {
   return (
     <main className="App">
-      <Register />
+      {/* <Register /> */}
+      <FormContainer />
     </main>
   );
 }

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  color: rgb(17, 17, 48);
+  font-size: 2rem;
+  height: 3rem;
+}
+
+.create {
+  text-decoration: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+}

@@ -40,7 +40,17 @@ const ViewApplicant = () => {
     return (
       <Container className="mt-2" fluid>
         <Row>
-          <FormTopBar header="Applicant's Details" />
+          <Col>
+            <FormTopBar header="Applicant's Details" />
+          </Col>
+          <Col className="d-flex justify-content-end">
+            <Link
+              to={`../editapplicant/${id}`}
+              className="btn btn-sm d-flex align-items-center btn-success"
+            >
+              Edit
+            </Link>
+          </Col>
         </Row>
         <Row className="mt-2">
           <Col sm="4" className="text-center">
@@ -53,12 +63,6 @@ const ViewApplicant = () => {
                 <Card.Text>Applied Position: {data.position}</Card.Text>
                 <Card.Text>Expected Salary: Rs {data.expectedSalary}</Card.Text>
                 <Card.Text>Reference: {data.references}</Card.Text>
-                <Link
-                  to={`../editapplicant/${id}`}
-                  className="btn btn-sm ms-1 btn-success"
-                >
-                  Edit
-                </Link>
               </Card.Body>
             </Card>
           </Col>

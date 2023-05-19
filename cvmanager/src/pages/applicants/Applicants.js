@@ -38,9 +38,9 @@ const Applicants = () => {
   useEffect(() => {
     const result = datas.filter((data) => {
       return (
-        data.fullName.toLowerCase().includes(search.toLocaleLowerCase()) ||
-        data.technology.toLowerCase().includes(search.toLocaleLowerCase()) ||
-        data.position.toLowerCase().includes(search.toLocaleLowerCase())
+        data.fullName.toLowerCase().includes(search.toLowerCase()) ||
+        data.technology.toLowerCase().includes(search.toLowerCase()) ||
+        data.position.toLowerCase().includes(search.toLowerCase())
       );
     });
     setFilterDatas(result);
@@ -54,8 +54,6 @@ const Applicants = () => {
       },
     },
   };
-
-
 
   const handleDelete = () => {
     axios
@@ -149,7 +147,7 @@ const Applicants = () => {
           highlightOnHover="true"
           className="custom-data-table"
           fixedHeader
-          fixedHeaderScrollHeight="450px"
+          fixedHeaderScrollHeight="400px"
           progressPending={pending}
           progressComponent={
             <div className="mt-4">

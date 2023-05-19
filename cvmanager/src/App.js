@@ -15,6 +15,8 @@ import Experiences from "./pages/experience/Experiences";
 import Welcome from "./pages/Welcome";
 import AssesmentTest from "./pages/assesmenttest/AssesmentTest";
 import Interview from "./pages/interview/Interview";
+import EditInterview from "./pages/interview/EditInterview";
+import ViewInterview from "./pages/interview/ViewInterview";
 import Interviewer from "./pages/interviewer/Interviewer";
 import OfferLetter from "./pages/offerletter/OfferLetter";
 // import Position from "./pages/positions/Position";
@@ -72,6 +74,8 @@ const router = createBrowserRouter(
         <Route path="interview" element={<InterviewLayout />}>
           <Route index element={<Interview />} />
           <Route path="createinterview" element={<CreateInterview />} />
+          <Route path="editinterview/:id" element={<EditInterview />} />
+          <Route path="viewinterview/:id" element={<ViewInterview />} />
         </Route>
 
         <Route path="interviewer" element={<InterviewerLayout />}>

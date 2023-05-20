@@ -23,12 +23,12 @@ const Interview = () => {
     setShow(true);
   };
   const handleDelete = () => {
+    handleClose();
     axios
       .delete(`${process.env.REACT_APP_BASE_URL}/interview/` + uid)
       .then((res) => {
         alert("Applicant has been Deleted");
         getData();
-        handleClose();
       });
   };
 

@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 const levelOptions = [
+  { key: "Intern", value: "Intern" },
   { key: "Junior", value: "Junior" },
   { key: "Mid", value: "Mid" },
   { key: "Senior", value: "Senior" },
@@ -25,19 +26,26 @@ const statusOptions = [
 ];
 const technologyOptions = [
   { key: "Select technology", value: "" },
-  { key: "React Native", value: "ReactNative" },
-  { key: "Front End", value: "Front End" },
+  { key: "ReactJS", value: "ReactJS" },
+  { key: "ReactNative", value: "ReactNative" },
+  { key: "DotNet", value: "DotNet" },
   { key: "QA", value: "QA" },
-  { key: "Dot Net", value: "Dot Net" },
-  { key: "React JS", value: "React JS" },
+  { key: "Frontend", value: "Frontend" },
+  { key: "NodeJS", value: "NodeJS" },
   { key: "DevOps", value: "DevOps" },
   { key: "PHP/Laravel", value: "PHP/Laravel" },
-  { key: "Support Engineer", value: "Support Engineer" },
-  { key: "Node JS", value: "Node JS" },
+  { key: "Support Engineer", value: "SupportEngineer" },
 ];
 
 const validationSchema = Yup.object({
-  fullName: Yup.string()
+  firstName: Yup.string()
+    .required("Please enter the required field")
+    .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "),
+  middleName: Yup.string().matches(
+    /^[aA-zZ\s]+$/,
+    "Only alphabets are allowed for this field "
+  ),
+  lastName: Yup.string()
     .required("Please enter the required field")
     .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "),
   email: Yup.string()
@@ -55,6 +63,7 @@ const validationSchema = Yup.object({
     .positive("Salary must be a positive number.")
     .required("Salary is required."),
   references: Yup.string(),
+  experience: Yup.string().required("required"),
 });
 
 const EditApplicant = () => {
@@ -76,20 +85,57 @@ const EditApplicant = () => {
     getData();
   }, []);
 
+  function splitFullName(fullName) {
+    if (!fullName) {
+      return []; // Return an empty array if fullName is undefined or empty
+    }
+
+    var nameParts = fullName.trim().split(/\s+/);
+
+    var firstName = nameParts.shift();
+    var lastName = nameParts.pop();
+    var middleName = nameParts.join(" ");
+
+    return [firstName, middleName, lastName];
+  }
+  let fullName = data.fullName;
+  let nameparts = splitFullName(fullName);
+
   const initialValues = {
-    fullName: data.fullName,
+    firstName: nameparts[0],
+    middleName: nameparts[1],
+    lastName: nameparts[2],
     mobileNumber: data.mobileNumber,
     email: data.email,
     position: data.position,
     status: data.status,
     technology: data.technology,
+    experience: data.experience,
     expectedSalary: data.expectedSalary,
     references: data.references,
   };
   const navigate = useNavigate();
   const onSubmit = (values) => {
+    let fullName = "";
+    if (values.middleName === "") {
+      fullName = values.firstName + " " + values.lastName;
+    } else {
+      fullName =
+        values.firstName + " " + values.middleName + " " + values.lastName;
+    }
+    let data = {
+      fullName: fullName,
+      email: values.email,
+      mobileNumber: values.mobileNumber,
+      status: values.status,
+      technology: values.technology,
+      position: values.position,
+      experience: values.experience,
+      expectedSalary: values.expectedSalary,
+      references: values.references,
+    };
     axios
-      .put(`${process.env.REACT_APP_BASE_URL}/applicants/` + id, values)
+      .put(`${process.env.REACT_APP_BASE_URL}/applicants/` + id, data)
       .then((res) => {
         alert("Applicant Edited Sucessfully");
       });
@@ -115,12 +161,30 @@ const EditApplicant = () => {
             <Form>
               <FormTopBar header="Edit Applicant" />
               <Row className="mt-1">
-                <Col sm="4">
+                <Col>
                   <FormControl
                     control="input"
-                    name="fullName"
+                    name="firstName"
                     type="text"
-                    label="Full name"
+                    label="First Name"
+                  />
+                </Col>
+
+                <Col>
+                  <FormControl
+                    control="input"
+                    name="middleName"
+                    type="text"
+                    label="Middle Name"
+                  />
+                </Col>
+
+                <Col>
+                  <FormControl
+                    control="input"
+                    name="lastName"
+                    type="text"
+                    label="Last Name"
                   />
                 </Col>
               </Row>
@@ -169,6 +233,15 @@ const EditApplicant = () => {
                     name="position"
                     label="Choose Level"
                     options={levelOptions}
+                  />
+                </Col>
+              </Row>
+              <Row className="mt-3">
+                <Col>
+                  <FormControl
+                    control="textarea"
+                    name="experience"
+                    label="Experience"
                   />
                 </Col>
               </Row>

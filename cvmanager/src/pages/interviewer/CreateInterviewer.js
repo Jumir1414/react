@@ -5,7 +5,8 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import FormTopBar from "../../component/formcomponents/FormTopBar";
 import { useNavigate } from "react-router-dom";
 import FormControl from "../../component/formcomponents/FormControl";
-
+import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 const levelOptions = [
   { key: "Junior", value: "Junior" },
   { key: "Mid", value: "Mid" },
@@ -14,18 +15,36 @@ const levelOptions = [
 
 const initialValues = {
   interviewerName: "",
-  positionName: "",
+  position: "",
 };
 
 const validationSchema = Yup.object({
   interviewerName: Yup.string().required("Name is Required"),
-  positionName: Yup.string().required("Required"),
+  position: Yup.string().required("Required"),
 });
+
+const postData = async (data) => {
+  try {
+    await axios
+      .post(`${process.env.REACT_APP_BASE_URL}/interviewer`, data)
+      .then((res) => {
+        alert("Interviewer created Sucessfully");
+      });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const CreateInterviewer = () => {
   const navigate = useNavigate();
   const onSubmit = (values) => {
-    console.log("hello", values);
+    const data = {
+      id: uuidv4(),
+      interviewerName: values.interviewerName,
+      position: values.position,
+    };
 
+    postData(data);
     navigate("..");
   };
   return (
@@ -51,7 +70,7 @@ const CreateInterviewer = () => {
               <Col>
                 <FormControl
                   control="radio"
-                  name="positionName"
+                  name="position"
                   label="Choose Position"
                   options={levelOptions}
                 />

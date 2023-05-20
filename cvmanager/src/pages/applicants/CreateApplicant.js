@@ -6,8 +6,9 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import FormTopBar from "../../component/formcomponents/FormTopBar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { v4 as uuidv4 } from "uuid";
 const levelOptions = [
+  { key: "Intern", value: "Intern" },
   { key: "Junior", value: "Junior" },
   { key: "Mid", value: "Mid" },
   { key: "Senior", value: "Senior" },
@@ -24,15 +25,15 @@ const statusOptions = [
 ];
 const technologyOptions = [
   { key: "Select technology", value: "" },
-  { key: "React JS", value: "ReactJS" },
-  { key: "React Native", value: "ReactNative" },
-  { key: "Dot Net", value: "Dot Net" },
+  { key: "ReactJS", value: "ReactJS" },
+  { key: "ReactNative", value: "ReactNative" },
+  { key: "DotNet", value: "DotNet" },
   { key: "QA", value: "QA" },
-  { key: "Front End", value: "Front End" },
-  { key: "Node JS", value: "NodeJS" },
+  { key: "Frontend", value: "Frontend" },
+  { key: "NodeJS", value: "NodeJS" },
   { key: "DevOps", value: "DevOps" },
-  { key: "PHP/Laravel", value: "PHP" },
-  { key: "Support Engineer", value: "Support Engineer" },
+  { key: "PHP/Laravel", value: "PHP/Laravel" },
+  { key: "Support Engineer", value: "SupportEngineer" },
 ];
 // const technologyOptions = [
 //   { label: "React JS", value: "React JS" },
@@ -47,10 +48,9 @@ const technologyOptions = [
 // ];
 
 const initialValues = {
-  fullName: "",
-  // firstName: "",
-  // middleName: "",
-  // lastName: "",
+  firstName: "",
+  middleName: "",
+  lastName: "",
   mobileNumber: "",
   email: "",
   position: "",
@@ -58,26 +58,27 @@ const initialValues = {
   technology: "",
   expectedSalary: "",
   references: "",
+  experience: "",
   // cv: null,
 };
 
 const validationSchema = Yup.object({
-  fullName: Yup.string()
-    .required("Please enter the required field")
-    .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "),
-  // firstName: Yup.string()
+  // fullName: Yup.string()
   //   .required("Please enter the required field")
   //   .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "),
+  firstName: Yup.string()
+    .required("Please enter the required field")
+    .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "),
   email: Yup.string()
     .email("Please enter a valid email address.")
     .required("Email is required."),
-  // middleName: Yup.string().matches(
-  //   /^[aA-zZ\s]+$/,
-  //   "Only alphabets are allowed for this field "
-  // ),
-  // lastName: Yup.string()
-  //   .required("Please enter the required field")
-  //   .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "),
+  middleName: Yup.string().matches(
+    /^[aA-zZ\s]+$/,
+    "Only alphabets are allowed for this field "
+  ),
+  lastName: Yup.string()
+    .required("Please enter the required field")
+    .matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field "),
   mobileNumber: Yup.string()
     .matches(/^\d{10}$/, "Please enter a valid mobile number.")
     .required("Mobile number is required."),
@@ -93,6 +94,7 @@ const validationSchema = Yup.object({
     .positive("Salary must be a positive number.")
     .required("Salary is required."),
   references: Yup.string(),
+  experience: Yup.string().required("required"),
   // cv: Yup.mixed().nullable().required("CV is required"),
 });
 
@@ -111,8 +113,27 @@ const postData = async (data) => {
 const CreateApplicant = () => {
   const navigate = useNavigate();
   const onSubmit = (values) => {
-    postData(values);
-    console.log("data", values);
+    let fullName = "";
+    if (values.middleName === "") {
+      fullName = values.firstName + " " + values.lastName;
+    } else {
+      fullName =
+        values.firstName + " " + values.middleName + " " + values.lastName;
+    }
+    let data = {
+      id: uuidv4(),
+      fullName: fullName,
+      email: values.email,
+      mobileNumber: values.mobileNumber,
+      status: values.status,
+      technology: values.technology,
+      position: values.position,
+      experience: values.experience,
+      expectedSalary: values.expectedSalary,
+      references: values.references,
+    };
+
+    postData(data);
     // for multi select
     // let techno = [];
     // values.technology.map((a) => (techno = [a.value, ...techno]));
@@ -144,7 +165,7 @@ const CreateApplicant = () => {
           <Form>
             <FormTopBar header="Create Applicant" />
             <Row className="mt-1">
-              {/* <Col>
+              <Col>
                 <FormControl
                   control="input"
                   name="firstName"
@@ -169,15 +190,15 @@ const CreateApplicant = () => {
                   type="text"
                   label="Last Name"
                 />
-              </Col> */}
-              <Col sm="4">
+              </Col>
+              {/* <Col sm="4">
                 <FormControl
                   control="input"
                   name="fullName"
                   type="text"
                   label="Full name"
                 />
-              </Col>
+              </Col> */}
             </Row>
 
             <Row className="mt-3">
@@ -232,6 +253,15 @@ const CreateApplicant = () => {
                   name="position"
                   label="Choose Level"
                   options={levelOptions}
+                />
+              </Col>
+            </Row>
+            <Row className="mt-3">
+              <Col>
+                <FormControl
+                  control="textarea"
+                  name="experience"
+                  label="Experience"
                 />
               </Col>
             </Row>

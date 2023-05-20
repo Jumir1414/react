@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import FormTopBar from "../../component/formcomponents/FormTopBar";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
@@ -76,6 +76,14 @@ const ViewApplicant = () => {
                 <Card.Text>Email: {data.email}</Card.Text>
                 <Card.Text>Phone :{data.mobileNumber}</Card.Text>
                 <Card.Text>Address: </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col sm="4" className="text-center">
+            <Card style={{ height: "100%" }}>
+              <Card.Header as="h5">Experience</Card.Header>
+              <Card.Body>
+                <Card.Text>{data.experience}</Card.Text>
               </Card.Body>
             </Card>
           </Col>

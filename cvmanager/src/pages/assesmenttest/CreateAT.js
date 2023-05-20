@@ -1,70 +1,122 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import FormTopBar from "../../component/formcomponents/FormTopBar";
 import { useNavigate } from "react-router-dom";
 import FormControl from "../../component/formcomponents/FormControl";
+import axios from "axios";
+import Spinner from "react-bootstrap/Spinner";
 const initialValues = {
-  applicantID: "",
+  applicant: [],
   title: "",
   evaluation: "",
-  document: null,
+  // document: null,
 };
 
 const validationSchema = Yup.object({
-  applicantID: Yup.string()
-    .required("User ID is required")
-    .matches(
-      /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/,
-      "Invalid GUID format"
-    ),
-  title: Yup.string().required("Title is required"),
+  applicant: Yup.array()
+    .max(1, "Please select only one option.")
+    // .of(Yup.string(), "Invalid option selected.")
+    .required("Please select at least one option."),
   evaluation: Yup.string(),
-  document: Yup.mixed().nullable().required("Document is required"),
+  // document: Yup.mixed().nullable().required("Document is required"),
 });
-
+const postData = async (data) => {
+  try {
+    await axios
+      .post(`${process.env.REACT_APP_BASE_URL}/assesmentTest`, data)
+      .then((res) => {
+        alert("Assesment Test created Sucessfully");
+      });
+  } catch (error) {
+    console.log(error);
+  }
+};
 const CreateAT = () => {
-  // const navigate = useNavigate();
-  const onSubmit = (values) => {
-    console.log("data", values);
-
-    // navigate("..");
+  const [applicants, setApplicants] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const getData = async () => {
+    try {
+      const response1 = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/applicants`
+      );
+      setApplicants(response1.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  return (
-    <Container className="mt-2" fluid>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
-        {({ setFieldValue }) => (
-          <Form>
-            <FormTopBar header="Create Applicant Test" />
-            <Row className="mt-1">
-              <Col sm="4">
-                <FormControl
-                  control="input"
-                  name="applicantID"
-                  label="Applicant ID"
-                />
-              </Col>
-            </Row>
-            <Row className="mt-1">
-              <Col sm="4">
-                <FormControl control="input" name="title" label="Title" />
-              </Col>
-            </Row>
-            <Row className="mt-1">
-              <Col sm="5">
-                <FormControl
-                  control="input"
-                  name="evaluation"
-                  label="Evaluation"
-                />
-              </Col>
-            </Row>
-            <Row className="mt-2">
+  useEffect(() => {
+    getData();
+  }, []);
+  const navigate = useNavigate();
+  const onSubmit = (values) => {
+    const assessmentData = {
+      applicantName: values.applicant[0].label,
+      applicantId: values.applicant[0].value,
+      title: values.title,
+      evaluation: values.evaluation,
+    };
+    postData(assessmentData);
+    navigate("..");
+  };
+
+  if (loading) {
+    return (
+      <Container>
+        <div className="d-flex justify-content-center mt-5 ">
+          <Spinner animation="border" />
+        </div>
+      </Container>
+    );
+  } else {
+    let applicantOptions = [];
+    applicants.map((applicant) => {
+      return (applicantOptions = [
+        ...applicantOptions,
+        {
+          label: applicant.fullName,
+          value: applicant.id,
+        },
+      ]);
+    });
+
+    return (
+      <Container className="mt-2" fluid>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={onSubmit}
+        >
+          {({ setFieldValue }) => (
+            <Form>
+              <FormTopBar header="Create Assessment Test" />
+              <Row className="mt-1">
+                <Col sm="4">
+                  <FormControl
+                    control="multi"
+                    name="applicant"
+                    label="Choose only one Applicant"
+                    options={applicantOptions}
+                  />
+                </Col>
+              </Row>
+              <Row className="mt-1">
+                <Col sm="4">
+                  <FormControl control="input" name="title" label="Title" />
+                </Col>
+              </Row>
+              <Row className="mt-1">
+                <Col sm="5">
+                  <FormControl
+                    control="input"
+                    name="evaluation"
+                    label="Evaluation"
+                  />
+                </Col>
+              </Row>
+              {/* <Row className="mt-2">
               <Col sm="4">
                 <FormControl
                   control="file"
@@ -76,19 +128,20 @@ const CreateAT = () => {
                   accept=".doc,.docx,.pdf"
                 />
               </Col>
-            </Row>
-            <Row className="mt-2">
-              <Col sm="1">
-                <div className="text-center">
-                  <Button type="submit">Submit</Button>
-                </div>
-              </Col>
-            </Row>
-          </Form>
-        )}
-      </Formik>
-    </Container>
-  );
+            </Row> */}
+              <Row className="mt-2">
+                <Col sm="1">
+                  <div className="text-center">
+                    <Button type="submit">Submit</Button>
+                  </div>
+                </Col>
+              </Row>
+            </Form>
+          )}
+        </Formik>
+      </Container>
+    );
+  }
 };
 
 export default CreateAT;

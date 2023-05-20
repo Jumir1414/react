@@ -227,6 +227,18 @@
       "expectedSalary": 525947.87,
       "references": "cklimshukl@xrea.com",
       "experience": "Administrative Officer"
+    },
+    {
+      "id": "6635dbc3-dcac-4cb0-90e6-7640318725fc",
+      "fullName": "naruto uzumaki",
+      "email": "jumirgosain@gmail.com",
+      "mobileNumber": "7777777777",
+      "status": "Interviewing",
+      "technology": "ReactNative",
+      "position": "Senior",
+      "experience": "hokage",
+      "expectedSalary": "100000",
+      "references": "noxemuwig@mailinator.com"
     }
   ],
   "applicantsList": [
@@ -379,255 +391,82 @@
   ],
   "interview": [
     {
-      "title": "react interview 1",
-      "date": "2023-05-20 00:00",
+      "title": "QA interview",
+      "date": "2023-05-25 00:00",
       "interviewers": [
         {
-          "label": "Lucita Thackston",
-          "value": "b603e7ec-313a-44fb-b4cf-1d4e14bae235"
+          "label": "Anthony Barclay",
+          "value": "a8ce1418-4009-41e3-9bfa-f3b803403c72"
         },
         {
-          "label": "Elvyn Divers",
-          "value": "834ba6fd-324e-4f40-9842-5cb04d40689c"
+          "label": "Duke Carl",
+          "value": "6ebca02b-6674-4e00-9e00-fdbbe8224912"
         }
       ],
       "applicants": [
         {
-          "label": "Newton Lehemann",
-          "value": "603ff785-2875-4d87-9653-91105c3b7f6a"
+          "label": "Margarita Turbern",
+          "value": "e1740334-fecb-4bec-b24e-92e10593a392"
         },
         {
-          "label": "Abeu Berwick",
-          "value": "5fe89621-dc2b-446d-b6e8-99d28e1f8c28"
+          "label": "Casandra Varden",
+          "value": "918aa05d-09c6-4cb1-83e3-7cab3465dc16"
         },
         {
-          "label": "Hamlen Castagna",
-          "value": "433727f4-d23f-4e04-a576-c44498cd0a24"
+          "label": "Llewellyn McNess",
+          "value": "d68356ad-6e02-4299-bafc-99512a9d8448"
         },
         {
-          "label": "Pam Baptie",
-          "value": "d10d6b6c-b023-4ca8-a26c-ed7ffd928f65"
+          "label": "Kaspar Metschke",
+          "value": "d37792e2-8f07-446d-8bb2-056d2067322b"
         },
         {
-          "label": "Shanda Skurm",
-          "value": "2bc62e58-7a90-41a7-b1a5-c01c489631be"
+          "label": "Reeva Brehaut",
+          "value": "f74b70d6-5c49-401f-aabe-935c515d0908"
         },
         {
-          "label": "Barbabas Tenbrug",
-          "value": "93fa3fc3-6883-4415-82d3-53b0fc8e7413"
+          "label": "Julee Carletti",
+          "value": "72faf3b4-1f7e-4f17-ae9f-4585f3439031"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "title": "FrontEnd interview",
+      "date": "2023-05-23 10:00",
+      "interviewers": [
+        {
+          "label": "Karol Norville",
+          "value": "3c8b200e-8b6f-453a-bd11-8cd7d4019dda"
         },
         {
-          "label": "Poppy Tomich",
-          "value": "55459bc0-cb8e-4549-8816-ebdbad1888b4"
+          "label": "Ewan Glydet",
+          "value": "6643072b-f526-4a66-bede-7986dfdcd3c9"
+        }
+      ],
+      "applicants": [
+        {
+          "label": "Devondra Brende",
+          "value": "88fb7030-0ea6-4116-8318-076f75285651"
+        },
+        {
+          "label": "Pris Marusyak",
+          "value": "ca118b7c-7b39-4d40-89ba-29948072fce9"
+        },
+        {
+          "label": "Aubrey Redfern",
+          "value": "1945a5f9-0c41-49a5-afa8-76240be8bc5f"
+        },
+        {
+          "label": "Margarita Turbern",
+          "value": "e1740334-fecb-4bec-b24e-92e10593a392"
+        },
+        {
+          "label": "Casandra Varden",
+          "value": "918aa05d-09c6-4cb1-83e3-7cab3465dc16"
         }
       ],
       "id": 2
-    },
-    {
-      "title": "dot net interview",
-      "date": "2023-05-24 00:00",
-      "interviewers": [
-        {
-          "label": "Kirsten Shillan",
-          "value": "5fcc50fa-df06-42d7-8213-86039da3e127"
-        },
-        {
-          "label": "Rocky Moncrieffe",
-          "value": "7bc7ee63-bb7f-4c11-8520-f1dfdab4c062"
-        }
-      ],
-      "applicants": [
-        {
-          "label": "Shani Stuart",
-          "value": "bf9b49b8-f522-4b13-b5e7-a9970029fc51"
-        },
-        {
-          "label": "Yasmin Minkin",
-          "value": "7f6a72f4-02f3-42d7-b94d-b19bede1a6fb"
-        },
-        {
-          "label": "Pegeen Stainbridge",
-          "value": "4f2341a8-0ec3-4522-a571-bee875200631"
-        },
-        {
-          "label": "Stavro Slaymaker",
-          "value": "a9b9389d-e35e-4c44-870f-69163bb29478"
-        },
-        {
-          "label": "Niven Danks",
-          "value": "7b8183ac-439e-4ac2-927c-949450119048"
-        }
-      ],
-      "id": 3
-    },
-    {
-      "title": "react interview 3rd",
-      "date": "2023-06-01 11:30",
-      "interviewers": [
-        {
-          "label": "Matty Chalmers",
-          "value": "878662d7-cfaa-4e3e-9522-a9df613b148f"
-        },
-        {
-          "label": "Broderick Craddy",
-          "value": "ac9ba8a3-81d8-410f-92a0-cb2f419b5727"
-        }
-      ],
-      "applicants": [
-        {
-          "label": "Abeu Berwick",
-          "value": "5fe89621-dc2b-446d-b6e8-99d28e1f8c28"
-        },
-        {
-          "label": "Hamlen Castagna",
-          "value": "433727f4-d23f-4e04-a576-c44498cd0a24"
-        },
-        {
-          "label": "Pam Baptie",
-          "value": "d10d6b6c-b023-4ca8-a26c-ed7ffd928f65"
-        },
-        {
-          "label": "Blinny Garr",
-          "value": "dfb42d1c-cdf0-440c-9148-68a68e4c4dff"
-        }
-      ],
-      "id": 4
-    },
-    {
-      "title": "php/laravel interview",
-      "date": "2023-05-25 13:00",
-      "interviewers": [
-        {
-          "label": "Broderick Craddy",
-          "value": "ac9ba8a3-81d8-410f-92a0-cb2f419b5727"
-        },
-        {
-          "label": "Lucita Thackston",
-          "value": "b603e7ec-313a-44fb-b4cf-1d4e14bae235"
-        }
-      ],
-      "applicants": [
-        {
-          "label": "Newton Lehemann",
-          "value": "603ff785-2875-4d87-9653-91105c3b7f6a"
-        },
-        {
-          "label": "Yasmin Minkin",
-          "value": "7f6a72f4-02f3-42d7-b94d-b19bede1a6fb"
-        },
-        {
-          "label": "Shani Stuart",
-          "value": "bf9b49b8-f522-4b13-b5e7-a9970029fc51"
-        },
-        {
-          "label": "Pegeen Stainbridge",
-          "value": "4f2341a8-0ec3-4522-a571-bee875200631"
-        }
-      ],
-      "id": 5
-    },
-    {
-      "title": "QA interview",
-      "date": "2023-05-27 00:00",
-      "interviewers": [
-        {
-          "label": "Salomo MacBean",
-          "value": "1902c611-9836-479b-849e-14e5caf0d8cf"
-        },
-        {
-          "label": "Broderick Craddy",
-          "value": "ac9ba8a3-81d8-410f-92a0-cb2f419b5727"
-        }
-      ],
-      "applicants": [
-        {
-          "label": "Abeu Berwick",
-          "value": "5fe89621-dc2b-446d-b6e8-99d28e1f8c28"
-        },
-        {
-          "label": "Hamlen Castagna",
-          "value": "433727f4-d23f-4e04-a576-c44498cd0a24"
-        },
-        {
-          "label": "Pam Baptie",
-          "value": "d10d6b6c-b023-4ca8-a26c-ed7ffd928f65"
-        }
-      ],
-      "id": 6
-    },
-    {
-      "title": "forntend interview",
-      "date": "2023-06-01 13:30",
-      "interviewers": [
-        {
-          "label": "Matty Chalmers",
-          "value": "878662d7-cfaa-4e3e-9522-a9df613b148f"
-        },
-        {
-          "label": "Salomo MacBean",
-          "value": "1902c611-9836-479b-849e-14e5caf0d8cf"
-        }
-      ],
-      "applicants": [
-        {
-          "label": "Newton Lehemann",
-          "value": "603ff785-2875-4d87-9653-91105c3b7f6a"
-        },
-        {
-          "label": "Abeu Berwick",
-          "value": "5fe89621-dc2b-446d-b6e8-99d28e1f8c28"
-        }
-      ],
-      "id": 7
-    },
-    {
-      "title": "Support Engineer Interview",
-      "date": "2023-06-07 10:00",
-      "interviewers": [
-        {
-          "label": "Matty Chalmers",
-          "value": "878662d7-cfaa-4e3e-9522-a9df613b148f"
-        },
-        {
-          "label": "Salomo MacBean",
-          "value": "1902c611-9836-479b-849e-14e5caf0d8cf"
-        },
-        {
-          "label": "Broderick Craddy",
-          "value": "ac9ba8a3-81d8-410f-92a0-cb2f419b5727"
-        }
-      ],
-      "applicants": [
-        {
-          "label": "Poppy Tomich",
-          "value": "55459bc0-cb8e-4549-8816-ebdbad1888b4"
-        },
-        {
-          "label": "Barbabas Tenbrug",
-          "value": "93fa3fc3-6883-4415-82d3-53b0fc8e7413"
-        },
-        {
-          "label": "Shanda Skurm",
-          "value": "2bc62e58-7a90-41a7-b1a5-c01c489631be"
-        },
-        {
-          "label": "Jacqueline Fetter",
-          "value": "7cea9c14-8683-4a0f-a441-4713775e89c9"
-        },
-        {
-          "label": "Merrie Spillane",
-          "value": "d6b411b4-cc27-42a8-b9f8-0f16a7770013"
-        },
-        {
-          "label": "Danica Groucutt",
-          "value": "46f7148f-a5bd-4162-8dda-022e7cfd3123"
-        },
-        {
-          "label": "Lola Handforth",
-          "value": "11dee2a4-7895-436e-b614-0f2f46e5469e"
-        }
-      ],
-      "id": 8
     }
   ],
   "interviewer": [
@@ -635,11 +474,6 @@
       "interviewerName": "Ewan Glydet",
       "position": "Senior",
       "id": "6643072b-f526-4a66-bede-7986dfdcd3c9"
-    },
-    {
-      "id": "9fc4fb6f-6739-40e0-9a9c-6526c120d0ac",
-      "interviewerName": "Thornie Logie",
-      "position": "Junior"
     },
     {
       "id": "3c8b200e-8b6f-453a-bd11-8cd7d4019dda",
@@ -657,11 +491,6 @@
       "position": "Senior"
     },
     {
-      "id": "e504294a-9914-43ec-8eb0-84c6cdbe53fb",
-      "interviewerName": "Bobbye Revening",
-      "position": "Junior"
-    },
-    {
       "id": "9f1a6a4f-ec7d-4942-883a-6ae8131de63b",
       "interviewerName": "Monkey D luffy",
       "position": "Senior"
@@ -670,6 +499,22 @@
       "id": "26ad1679-8847-4725-b4a6-e09136b51ed0",
       "interviewerName": "Naruto Uzumaki",
       "position": "Senior"
+    }
+  ],
+  "assesmentTest": [
+    {
+      "applicantName": "Sal Carling",
+      "applicantId": "341fe7a3-d8db-43a6-b3a0-db38b53c0f7e",
+      "title": "node js assessment",
+      "evaluation": "very good",
+      "id": 1
+    },
+    {
+      "applicantName": "Pris Marusyak",
+      "applicantId": "ca118b7c-7b39-4d40-89ba-29948072fce9",
+      "title": "QA assessment",
+      "evaluation": "very bad",
+      "id": 2
     }
   ]
 }

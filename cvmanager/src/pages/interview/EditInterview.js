@@ -32,10 +32,10 @@ const EditInterview = () => {
   const getData = async () => {
     try {
       const response1 = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/applicantsList`
+        `${process.env.REACT_APP_BASE_URL}/applicants`
       );
       const response2 = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/interviewerList`
+        `${process.env.REACT_APP_BASE_URL}/interviewer`
       );
       const response3 = await axios.get(
         `${process.env.REACT_APP_BASE_URL}/interview/` + id
@@ -95,20 +95,20 @@ const EditInterview = () => {
     let interviewerOptions = [];
     applicants.map((applicant) => {
       return (applicantOptions = [
+        ...applicantOptions,
         {
           label: applicant.applicantName,
-          value: applicant.applicantId,
+          value: applicant.id,
         },
-        ...applicantOptions,
       ]);
     });
     interviewers.map((interviewer) => {
       return (interviewerOptions = [
+        ...interviewerOptions,
         {
           label: interviewer.interviewerName,
-          value: interviewer.interviewerId,
+          value: interviewer.id,
         },
-        ...interviewerOptions,
       ]);
     });
 

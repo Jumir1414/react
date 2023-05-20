@@ -36,10 +36,10 @@ const CreateInterview = () => {
   const getData = async () => {
     try {
       const response1 = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/applicantsList`
+        `${process.env.REACT_APP_BASE_URL}/applicants`
       );
       const response2 = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/interviewerList`
+        `${process.env.REACT_APP_BASE_URL}/interviewer`
       );
       setApplicants(response1.data);
       setInterviewers(response2.data);
@@ -75,7 +75,6 @@ const CreateInterview = () => {
     };
     postData(data);
     navigate("..");
-    console.log(data);
   };
   const maxDate = new Date();
   if (loading) {
@@ -91,20 +90,20 @@ const CreateInterview = () => {
     let interviewerOptions = [];
     applicants.map((applicant) => {
       return (applicantOptions = [
-        {
-          label: applicant.applicantName,
-          value: applicant.applicantId,
-        },
         ...applicantOptions,
+        {
+          label: applicant.fullName,
+          value: applicant.id,
+        },
       ]);
     });
     interviewers.map((interviewer) => {
       return (interviewerOptions = [
+        ...interviewerOptions,
         {
           label: interviewer.interviewerName,
-          value: interviewer.interviewerId,
+          value: interviewer.id,
         },
-        ...interviewerOptions,
       ]);
     });
 

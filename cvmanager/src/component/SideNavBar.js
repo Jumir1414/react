@@ -8,7 +8,7 @@ const SideNavBar = () => {
       <Stack gap={1}>
         <NavLink to="applicant">Applicants</NavLink>
         <NavLink to="interviewer">Interviewers</NavLink>
-        <NavLink to="assesmenttest">Assesment Tests</NavLink>
+        <NavLink to="assesmenttest">Assessment Tests</NavLink>
         <NavLink to="interview">Interviews</NavLink>
         {/* <NavLink>Letter Service</NavLink> */}
         {/* <NavLink to="position">Position</NavLink> */}

@@ -25,6 +25,7 @@ import CreateInterview from "./pages/interview/CreateInterview";
 import CreateInterviewer from "./pages/interviewer/CreateInterviewer";
 import EditInterviewer from "./pages/interviewer/EditInterviewer";
 import CreateAT from "./pages/assesmenttest/CreateAT";
+import EditAT from "./pages/assesmenttest/EditAT";
 import CreateOfferLetter from "./pages/offerletter/CreateOfferletter";
 import ApplicantLayout from "./layouts/ApplicantLayout";
 import AssesmentTestLayout from "./layouts/AssesmentTestLayout";
@@ -49,6 +50,7 @@ const router = createBrowserRouter(
         <Route path="assesmenttest" element={<AssesmentTestLayout />}>
           <Route index element={<AssesmentTest />} />
           <Route path="createat" element={<CreateAT />} />
+          <Route path="editat/:id" element={<EditAT />} />
         </Route>
 
         <Route path="interview" element={<InterviewLayout />}>

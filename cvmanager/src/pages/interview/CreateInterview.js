@@ -9,7 +9,7 @@ import axios from "axios";
 import FormControl from "../../component/formcomponents/FormControl";
 import Spinner from "react-bootstrap/Spinner";
 import { useEffect, useState } from "react";
-
+import usePost from "../../utilities/usePost";
 const initialValues = {
   title: "",
   dateTime: null,
@@ -52,17 +52,18 @@ const CreateInterview = () => {
     getData();
   }, []);
   const navigate = useNavigate();
-  const postData = async (data) => {
-    try {
-      await axios
-        .post(`${process.env.REACT_APP_BASE_URL}/interview`, data)
-        .then((res) => {
-          alert("Interview created Sucessfully");
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const postData = async (data) => {
+  //   try {
+  //     await axios
+  //       .post(`${process.env.REACT_APP_BASE_URL}/interview`, data)
+  //       .then((res) => {
+  //         alert("Interview created Sucessfully");
+  //       });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  const { postData } = usePost();
   const onSubmit = (values) => {
     console.log(values.dateTime);
     const date = moment(values.dateTime).format("YYYY-MM-DD HH:mm");
@@ -73,7 +74,11 @@ const CreateInterview = () => {
       interviewers: values.interviewers,
       applicants: values.applicants,
     };
-    postData(data);
+    postData(
+      `${process.env.REACT_APP_BASE_URL}/interview`,
+      data,
+      "Interview Created"
+    );
     navigate("..");
   };
   const maxDate = new Date();

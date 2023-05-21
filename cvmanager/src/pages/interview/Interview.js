@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import HeaderBar from "../../component/HeaderBar";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Spinner from "react-bootstrap/Spinner";
-import axios from "axios";
 import moment from "moment";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Table from "../../component/Table";
 import { Link } from "react-router-dom";
+import useFetch from "../../utilities/useFetch";
+import useDelete from "../../utilities/useDelete";
 const Interview = () => {
-  const [datas, setDatas] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [lgShow, setLgShow] = useState(false);
   const localizer = momentLocalizer(moment);
   const [show, setShow] = useState(false);
@@ -22,30 +21,22 @@ const Interview = () => {
     setUid(id);
     setShow(true);
   };
+  const { deleteData } = useDelete();
   const handleDelete = () => {
     handleClose();
-    axios
-      .delete(`${process.env.REACT_APP_BASE_URL}/interview/` + uid)
-      .then((res) => {
-        alert("Applicant has been Deleted");
-        getData();
-      });
+
+    deleteData(
+      `${process.env.REACT_APP_BASE_URL}/interview/`,
+      uid,
+      "Applicant has been Deleted"
+    );
+    refetch();
   };
 
-  const getData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/interview`
-      );
-      setDatas(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  const { datas, loading, refetch } = useFetch(
+    `${process.env.REACT_APP_BASE_URL}/interview`
+  );
+
   const tableCustomStyles = {
     headCells: {
       style: {
@@ -87,7 +78,6 @@ const Interview = () => {
           >
             View
           </Link>
-          {/* <Link>View</Link> */}
         </div>
       ),
     },

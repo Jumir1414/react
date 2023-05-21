@@ -97,18 +97,6 @@
       "experience": "Dental Hygienist"
     },
     {
-      "id": "d37792e2-8f07-446d-8bb2-056d2067322b",
-      "fullName": "Kaspar Metschke",
-      "mobileNumber": 7962372213,
-      "email": "kmetschkeb@cnn.com",
-      "position": "Intern",
-      "status": "Hired",
-      "technology": "DevOps",
-      "expectedSalary": 15374.46,
-      "references": "kmetschkeb@google.nl",
-      "experience": "Compensation Analyst"
-    },
-    {
       "id": "f74b70d6-5c49-401f-aabe-935c515d0908",
       "fullName": "Reeva Brehaut",
       "mobileNumber": 9200089646,
@@ -193,18 +181,6 @@
       "experience": "Developer IV"
     },
     {
-      "id": "c560d583-2c72-4212-91dd-41693d521bc9",
-      "fullName": "Trev Rishman",
-      "mobileNumber": 9089652679,
-      "email": "trishmanj@dion.ne.jp",
-      "position": "Intern",
-      "status": "Shorlisted",
-      "technology": "Frontend",
-      "expectedSalary": 527115.47,
-      "references": "trishmanj@zimbio.com",
-      "experience": "Software Consultant"
-    },
-    {
       "id": "a2613283-2309-4fea-8174-fd401e4fcb25",
       "fullName": "Stinky De Meis",
       "mobileNumber": 9353092093,
@@ -229,16 +205,16 @@
       "experience": "Administrative Officer"
     },
     {
-      "id": "6635dbc3-dcac-4cb0-90e6-7640318725fc",
-      "fullName": "naruto uzumaki",
+      "id": "adeb7bc8-a6e3-424a-9753-7748900ac3d1",
+      "fullName": "Roronowa zoro",
       "email": "jumirgosain@gmail.com",
-      "mobileNumber": "7777777777",
-      "status": "Interviewing",
+      "mobileNumber": "8888888888",
+      "status": "Hired",
       "technology": "ReactNative",
-      "position": "Senior",
-      "experience": "hokage",
-      "expectedSalary": "100000",
-      "references": "noxemuwig@mailinator.com"
+      "position": "Junior",
+      "experience": "king of hell",
+      "expectedSalary": "10000",
+      "references": "gydomex@mailinator.com"
     }
   ],
   "applicantsList": [
@@ -395,12 +371,12 @@
       "date": "2023-05-25 00:00",
       "interviewers": [
         {
-          "label": "Anthony Barclay",
-          "value": "a8ce1418-4009-41e3-9bfa-f3b803403c72"
+          "label": "Monkey D luffy",
+          "value": "9f1a6a4f-ec7d-4942-883a-6ae8131de63b"
         },
         {
-          "label": "Duke Carl",
-          "value": "6ebca02b-6674-4e00-9e00-fdbbe8224912"
+          "label": "Naruto Uzumaki",
+          "value": "26ad1679-8847-4725-b4a6-e09136b51ed0"
         }
       ],
       "applicants": [
@@ -467,36 +443,51 @@
         }
       ],
       "id": 2
+    },
+    {
+      "title": "interview for one piece ",
+      "date": "2023-05-31 13:00",
+      "interviewers": [
+        {
+          "label": "Monkey D luffy",
+          "value": "9f1a6a4f-ec7d-4942-883a-6ae8131de63b"
+        },
+        {
+          "label": "Mnkey D. Grap",
+          "value": "43e178e9-d8e6-4822-a323-ca6648a24538"
+        }
+      ],
+      "applicants": [
+        {
+          "label": "Roronowa zoro",
+          "value": "adeb7bc8-a6e3-424a-9753-7748900ac3d1"
+        },
+        {
+          "label": "Casandra Varden",
+          "value": "918aa05d-09c6-4cb1-83e3-7cab3465dc16"
+        }
+      ],
+      "id": 3
     }
   ],
   "interviewer": [
-    {
-      "interviewerName": "Ewan Glydet",
-      "position": "Senior",
-      "id": "6643072b-f526-4a66-bede-7986dfdcd3c9"
-    },
-    {
-      "id": "3c8b200e-8b6f-453a-bd11-8cd7d4019dda",
-      "interviewerName": "Karol Norville",
-      "position": "Mid"
-    },
-    {
-      "id": "a8ce1418-4009-41e3-9bfa-f3b803403c72",
-      "interviewerName": "Anthony Barclay",
-      "position": "Mid"
-    },
-    {
-      "id": "6ebca02b-6674-4e00-9e00-fdbbe8224912",
-      "interviewerName": "Duke Carl",
-      "position": "Senior"
-    },
     {
       "id": "9f1a6a4f-ec7d-4942-883a-6ae8131de63b",
       "interviewerName": "Monkey D luffy",
       "position": "Senior"
     },
     {
-      "id": "26ad1679-8847-4725-b4a6-e09136b51ed0",
+      "id": "91e4574e-3179-4181-8163-f40b03d10576",
+      "interviewerName": "Hero hira lal",
+      "position": "Senior"
+    },
+    {
+      "id": "43e178e9-d8e6-4822-a323-ca6648a24538",
+      "interviewerName": "Mnkey D. Grap",
+      "position": "Senior"
+    },
+    {
+      "id": "c8878a5b-33cd-4dbb-9f55-218b61ebdc1b",
       "interviewerName": "Naruto Uzumaki",
       "position": "Senior"
     }
@@ -515,6 +506,13 @@
       "title": "QA assessment",
       "evaluation": "very bad",
       "id": 2
+    },
+    {
+      "applicantName": "Roronowa zoro",
+      "applicantId": "adeb7bc8-a6e3-424a-9753-7748900ac3d1",
+      "title": "sword test",
+      "evaluation": "god like",
+      "id": 3
     }
   ]
 }

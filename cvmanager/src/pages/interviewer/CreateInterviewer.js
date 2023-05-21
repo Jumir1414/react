@@ -6,7 +6,7 @@ import FormTopBar from "../../component/formcomponents/FormTopBar";
 import { useNavigate } from "react-router-dom";
 import FormControl from "../../component/formcomponents/FormControl";
 import { v4 as uuidv4 } from "uuid";
-import axios from "axios";
+import usePost from "../../utilities/usePost";
 const levelOptions = [
   { key: "Junior", value: "Junior" },
   { key: "Mid", value: "Mid" },
@@ -23,19 +23,8 @@ const validationSchema = Yup.object({
   position: Yup.string().required("Required"),
 });
 
-const postData = async (data) => {
-  try {
-    await axios
-      .post(`${process.env.REACT_APP_BASE_URL}/interviewer`, data)
-      .then((res) => {
-        alert("Interviewer created Sucessfully");
-      });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const CreateInterviewer = () => {
+  const { postData } = usePost();
   const navigate = useNavigate();
   const onSubmit = (values) => {
     const data = {
@@ -44,7 +33,11 @@ const CreateInterviewer = () => {
       position: values.position,
     };
 
-    postData(data);
+    postData(
+      `${process.env.REACT_APP_BASE_URL}/interviewer`,
+      data,
+      "Interviewer Created"
+    );
     navigate("..");
   };
   return (

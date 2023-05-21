@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import HeaderBar from "../../component/HeaderBar";
 import Spinner from "react-bootstrap/Spinner";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import Table from "../../component/Table";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
+import useFetch from "../../utilities/useFetch";
+import useDelete from "../../utilities/useDelete";
 const AssesmentTest = () => {
-  const [datas, setDatas] = useState([]);
-  const [pending, setPending] = useState(true);
   const [show, setShow] = useState(false);
   const [uid, setUid] = useState("");
   const handleClose = () => setShow(false);
@@ -17,22 +16,11 @@ const AssesmentTest = () => {
     setUid(id);
     setShow(true);
   };
-  const getData = useCallback(async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/assesmentTest`
-      );
-      setDatas(response.data);
-      setPending(false);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [datas]);
 
-  useEffect(() => {
-    getData();
-  }, []);
-
+  const { datas, loading, refetch } = useFetch(
+    `${process.env.REACT_APP_BASE_URL}/assesmentTest`
+  );
+  const { deleteData } = useDelete();
   const tableCustomStyles = {
     headCells: {
       style: {
@@ -45,12 +33,12 @@ const AssesmentTest = () => {
 
   const handleDelete = () => {
     handleClose();
-    axios
-      .delete(`${process.env.REACT_APP_BASE_URL}/assesmentTest/` + uid)
-      .then((res) => {
-        alert("Interviewer has been Deleted");
-        getData();
-      });
+    deleteData(
+      `${process.env.REACT_APP_BASE_URL}/assesmentTest/`,
+      uid,
+      "Assessment Test has been deleted"
+    );
+    refetch();
   };
 
   const columns = [
@@ -123,7 +111,7 @@ const AssesmentTest = () => {
           className="custom-data-table"
           fixedHeader
           fixedHeaderScrollHeight="500px"
-          progressPending={pending}
+          progressPending={loading}
           progressComponent={
             <div className="mt-4">
               <Spinner animation="border" role="status">

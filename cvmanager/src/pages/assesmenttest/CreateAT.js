@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import FormControl from "../../component/formcomponents/FormControl";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
+import usePost from "../../utilities/usePost";
 const initialValues = {
   applicant: [],
   title: "",
@@ -22,18 +23,9 @@ const validationSchema = Yup.object({
   evaluation: Yup.string(),
   // document: Yup.mixed().nullable().required("Document is required"),
 });
-const postData = async (data) => {
-  try {
-    await axios
-      .post(`${process.env.REACT_APP_BASE_URL}/assesmentTest`, data)
-      .then((res) => {
-        alert("Assesment Test created Sucessfully");
-      });
-  } catch (error) {
-    console.log(error);
-  }
-};
+
 const CreateAT = () => {
+  const { postData } = usePost();
   const [applicants, setApplicants] = useState([]);
   const [loading, setLoading] = useState(true);
   const getData = async () => {
@@ -58,7 +50,11 @@ const CreateAT = () => {
       title: values.title,
       evaluation: values.evaluation,
     };
-    postData(assessmentData);
+    postData(
+      `${process.env.REACT_APP_BASE_URL}/assesmentTest`,
+      assessmentData,
+      "Assessment has been created"
+    );
     navigate("..");
   };
 

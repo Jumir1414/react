@@ -6,7 +6,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import FormTopBar from "../../component/formcomponents/FormTopBar";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-
 import Status from "../../component/Status";
 const ViewApplicant = () => {
   const { id } = useParams();
@@ -26,6 +25,7 @@ const ViewApplicant = () => {
   };
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {

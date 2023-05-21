@@ -4,9 +4,9 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import FormTopBar from "../../component/formcomponents/FormTopBar";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import usePost from "../../utilities/usePost";
 const levelOptions = [
   { key: "Intern", value: "Intern" },
   { key: "Junior", value: "Junior" },
@@ -98,19 +98,8 @@ const validationSchema = Yup.object({
   // cv: Yup.mixed().nullable().required("CV is required"),
 });
 
-const postData = async (data) => {
-  try {
-    await axios
-      .post(`${process.env.REACT_APP_BASE_URL}/applicants`, data)
-      .then((res) => {
-        alert("Applicant created Sucessfully");
-      });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const CreateApplicant = () => {
+  const { postData } = usePost();
   const navigate = useNavigate();
   const onSubmit = (values) => {
     let fullName = "";
@@ -133,7 +122,11 @@ const CreateApplicant = () => {
       references: values.references,
     };
 
-    postData(data);
+    postData(
+      `${process.env.REACT_APP_BASE_URL}/applicants`,
+      data,
+      "Applicant created Sucessfully"
+    );
     // for multi select
     // let techno = [];
     // values.technology.map((a) => (techno = [a.value, ...techno]));

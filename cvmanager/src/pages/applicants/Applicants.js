@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import HeaderBar from "../../component/HeaderBar";
 import Spinner from "react-bootstrap/Spinner";
-import axios from "axios";
+
 import { Link } from "react-router-dom";
 import Table from "../../component/Table";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
+import useFetch from "../../utilities/useFetch";
+import useDelete from "../../utilities/useDelete";
 const Applicants = () => {
-  const [datas, setDatas] = useState([]);
   const [filterDatas, setFilterDatas] = useState([]);
   const [search, setSearch] = useState("");
-  const [pending, setPending] = useState(true);
+
   const [show, setShow] = useState(false);
   const [uid, setUid] = useState("");
   const handleClose = () => setShow(false);
@@ -19,22 +20,11 @@ const Applicants = () => {
     setUid(id);
     setShow(true);
   };
-  const getData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/applicants`
-      );
-      setDatas(response.data);
-      setPending(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  useEffect(() => {
-    getData();
-  }, []);
-
+  const { datas, loading, refetch } = useFetch(
+    `${process.env.REACT_APP_BASE_URL}/applicants`
+  );
+  const { deleteData } = useDelete();
   useEffect(() => {
     const result = datas.filter((data) => {
       return (
@@ -44,6 +34,7 @@ const Applicants = () => {
       );
     });
     setFilterDatas(result);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
   const tableCustomStyles = {
     headCells: {
@@ -54,15 +45,23 @@ const Applicants = () => {
       },
     },
   };
-
+  const conditionalRowStyles = [
+    {
+      when: (row) => row.status === "Blacklisted",
+      style: {
+        backgroundColor: "red",
+      },
+    },
+  ];
   const handleDelete = () => {
     handleClose();
-    axios
-      .delete(`${process.env.REACT_APP_BASE_URL}/applicants/` + uid)
-      .then((res) => {
-        alert("Applicant has been Deleted");
-        getData();
-      });
+
+    deleteData(
+      `${process.env.REACT_APP_BASE_URL}/applicants/`,
+      uid,
+      "Applicant has been Deleted"
+    );
+    refetch();
   };
 
   const columns = [
@@ -142,13 +141,14 @@ const Applicants = () => {
         <Table
           columns={columns}
           data={search === "" ? datas : filterDatas}
+          conditionalRowStyles={conditionalRowStyles}
           pagination
           customStyles={tableCustomStyles}
           highlightOnHover="true"
           className="custom-data-table"
           fixedHeader
           fixedHeaderScrollHeight="400px"
-          progressPending={pending}
+          progressPending={loading}
           progressComponent={
             <div className="mt-4">
               <Spinner animation="border" role="status">

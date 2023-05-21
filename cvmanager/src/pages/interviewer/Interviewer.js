@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import HeaderBar from "../../component/HeaderBar";
 import Spinner from "react-bootstrap/Spinner";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import Table from "../../component/Table";
 import Modal from "react-bootstrap/Modal";
 import { Button } from "react-bootstrap";
+import useFetch from "../../utilities/useFetch";
+import useDelete from "../../utilities/useDelete";
 const Interviewer = () => {
-  const [datas, setDatas] = useState([]);
-  const [pending, setPending] = useState(true);
   const [show, setShow] = useState(false);
   const [uid, setUid] = useState("");
   const handleClose = () => setShow(false);
@@ -17,22 +16,11 @@ const Interviewer = () => {
     setUid(id);
     setShow(true);
   };
-  const getData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/interviewer`
-      );
-      setDatas(response.data);
-      setPending(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  useEffect(() => {
-    getData();
-  }, []);
-
+  const { datas, loading, refetch } = useFetch(
+    `${process.env.REACT_APP_BASE_URL}/interviewer`
+  );
+  const { deleteData } = useDelete();
   const tableCustomStyles = {
     headCells: {
       style: {
@@ -45,12 +33,13 @@ const Interviewer = () => {
 
   const handleDelete = () => {
     handleClose();
-    axios
-      .delete(`${process.env.REACT_APP_BASE_URL}/interviewer/` + uid)
-      .then((res) => {
-        alert("Interviewer has been Deleted");
-        getData();
-      });
+
+    deleteData(
+      `${process.env.REACT_APP_BASE_URL}/interviewer/`,
+      uid,
+      "Interviewer has been Deleted"
+    );
+    refetch();
   };
 
   const columns = [
@@ -121,7 +110,7 @@ const Interviewer = () => {
           className="custom-data-table"
           fixedHeader
           fixedHeaderScrollHeight="500px"
-          progressPending={pending}
+          progressPending={loading}
           progressComponent={
             <div className="mt-4">
               <Spinner animation="border" role="status">

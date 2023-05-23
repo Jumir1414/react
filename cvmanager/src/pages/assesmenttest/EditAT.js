@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import FormTopBar from "../../component/formcomponents/FormTopBar";
 import { useNavigate } from "react-router-dom";
 import FormControl from "../../component/formcomponents/FormControl";
-import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
 import { useParams } from "react-router-dom";
+import usePut from "../../utilities/usePut";
+import useFetch from "../../utilities/useFetch";
 const validationSchema = Yup.object({
   applicant: Yup.array()
     .max(1, "Please select only one option.")
@@ -18,27 +19,13 @@ const validationSchema = Yup.object({
 });
 const EditAT = () => {
   const { id } = useParams();
-  const [data, setData] = useState([]);
-  const [applicants, setApplicants] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const getData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/assesmentTest/` + id
-      );
-      setData(response.data);
-      const response1 = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/applicants`
-      );
-      setApplicants(response1.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  const { putData } = usePut();
+  const { datas: data, loading } = useFetch(
+    `${process.env.REACT_APP_BASE_URL}/assesmentTest/${id}`
+  );
+  const { datas: applicants, loading: loading2 } = useFetch(
+    `${process.env.REACT_APP_BASE_URL}/applicants`
+  );
   const navigate = useNavigate();
   const onSubmit = (values) => {
     const assessmentData = {
@@ -47,17 +34,15 @@ const EditAT = () => {
       title: values.title,
       evaluation: values.evaluation,
     };
-    axios
-      .put(
-        `${process.env.REACT_APP_BASE_URL}/assesmentTest/` + id,
-        assessmentData
-      )
-      .then((res) => {
-        alert("Assessment Test Edited Sucessfully");
-      });
+    putData(
+      `${process.env.REACT_APP_BASE_URL}/assesmentTest/`,
+      id,
+      assessmentData,
+      "Assessment Test Edited Sucessfully"
+    );
     navigate("..");
   };
-  if (loading) {
+  if (loading || loading2) {
     return (
       <Container>
         <div className="d-flex justify-content-center mt-5 ">
@@ -97,7 +82,7 @@ const EditAT = () => {
         >
           {({ setFieldValue }) => (
             <Form>
-              <FormTopBar header="Create Assessment Test" />
+              <FormTopBar header="Edit Assessment Test" />
               <Row className="mt-1">
                 <Col sm="4">
                   <FormControl

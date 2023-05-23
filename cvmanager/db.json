@@ -1,28 +1,16 @@
 {
   "applicants": [
     {
-      "fullName": "Ange Beentjes",
-      "email": "abeentjes3@nydailynews.com",
-      "mobileNumber": 4072058720,
-      "status": "Interviewing",
-      "technology": "DevOps",
-      "position": "Intern",
-      "experience": "Safety Technician IV",
-      "expectedSalary": 531933.32,
-      "references": "abeentjes3@php.net",
-      "id": "84162f13-ca81-43b7-8030-0ba4a886af9a"
-    },
-    {
-      "id": "341fe7a3-d8db-43a6-b3a0-db38b53c0f7e",
       "fullName": "Sal Carling",
-      "mobileNumber": 8645891014,
       "email": "scarling4@ehow.com",
-      "position": "Intern",
-      "status": "Rejected",
+      "mobileNumber": 8645891014,
+      "status": "Offered",
       "technology": "DevOps",
+      "position": "Intern",
+      "experience": "Financial Advisor",
       "expectedSalary": 50961.61,
       "references": "scarling4@upenn.edu",
-      "experience": "Financial Advisor"
+      "id": "341fe7a3-d8db-43a6-b3a0-db38b53c0f7e"
     },
     {
       "id": "88fb7030-0ea6-4116-8318-076f75285651",
@@ -367,7 +355,7 @@
   ],
   "interview": [
     {
-      "title": "QA interview",
+      "title": " interview",
       "date": "2023-05-25 00:00",
       "interviewers": [
         {
@@ -468,18 +456,63 @@
         }
       ],
       "id": 3
+    },
+    {
+      "title": "Frontend interview 2 ",
+      "date": "2023-06-02 11:30",
+      "interviewers": [
+        {
+          "label": "Monkey D luffy",
+          "value": "9f1a6a4f-ec7d-4942-883a-6ae8131de63b"
+        },
+        {
+          "label": "Mnkey D. Grap",
+          "value": "43e178e9-d8e6-4822-a323-ca6648a24538"
+        }
+      ],
+      "applicants": [
+        {
+          "label": "Melinde Haswall",
+          "value": "edc60ac3-77ae-4d46-a86a-9026103ed119"
+        },
+        {
+          "label": "Micah Fleeman",
+          "value": "7ddbc318-4738-4fc9-a2a7-ee99abf400de"
+        },
+        {
+          "label": "Corine Hounsome",
+          "value": "d68db8cd-f371-41be-9819-6576e4be3ea4"
+        },
+        {
+          "label": "Catherina Daingerfield",
+          "value": "c4ec8dfa-97d3-424c-9c4b-777b76f919a0"
+        },
+        {
+          "label": "Reeva Brehaut",
+          "value": "f74b70d6-5c49-401f-aabe-935c515d0908"
+        },
+        {
+          "label": "Julee Carletti",
+          "value": "72faf3b4-1f7e-4f17-ae9f-4585f3439031"
+        },
+        {
+          "label": "Casandra Varden",
+          "value": "918aa05d-09c6-4cb1-83e3-7cab3465dc16"
+        }
+      ],
+      "id": 4
     }
   ],
   "interviewer": [
     {
-      "id": "9f1a6a4f-ec7d-4942-883a-6ae8131de63b",
       "interviewerName": "Monkey D luffy",
-      "position": "Senior"
+      "position": "Senior",
+      "id": "9f1a6a4f-ec7d-4942-883a-6ae8131de63b"
     },
     {
-      "id": "91e4574e-3179-4181-8163-f40b03d10576",
-      "interviewerName": "Hero hira lal",
-      "position": "Senior"
+      "interviewerName": "Hero  lal",
+      "position": "Senior",
+      "id": "91e4574e-3179-4181-8163-f40b03d10576"
     },
     {
       "id": "43e178e9-d8e6-4822-a323-ca6648a24538",
@@ -494,13 +527,6 @@
   ],
   "assesmentTest": [
     {
-      "applicantName": "Sal Carling",
-      "applicantId": "341fe7a3-d8db-43a6-b3a0-db38b53c0f7e",
-      "title": "node js assessment",
-      "evaluation": "very good",
-      "id": 1
-    },
-    {
       "applicantName": "Pris Marusyak",
       "applicantId": "ca118b7c-7b39-4d40-89ba-29948072fce9",
       "title": "QA assessment",
@@ -513,6 +539,13 @@
       "title": "sword test",
       "evaluation": "god like",
       "id": 3
+    },
+    {
+      "applicantName": "Pris Marusyak",
+      "applicantId": "ca118b7c-7b39-4d40-89ba-29948072fce9",
+      "title": "Qa assessment ",
+      "evaluation": "very good",
+      "id": 4
     }
   ]
 }

@@ -5,18 +5,22 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import FormTopBar from "../../component/formcomponents/FormTopBar";
 import { useNavigate } from "react-router-dom";
 import moment from "moment/moment";
-import axios from "axios";
 import FormControl from "../../component/formcomponents/FormControl";
 import Spinner from "react-bootstrap/Spinner";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import usePut from "../../utilities/usePut";
+import useFetch from "../../utilities/useFetch";
 const EditInterview = () => {
-  const [applicants, setApplicants] = useState([]);
-  const [interviewers, setInterviewers] = useState([]);
-  const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  const [data, setData] = useState([]);
+  const { datas: data, loading: loading1 } = useFetch(
+    `${process.env.REACT_APP_BASE_URL}/interview/${id}`
+  );
+  const { datas: applicants, loading: loading2 } = useFetch(
+    `${process.env.REACT_APP_BASE_URL}/applicants`
+  );
+  const { datas: interviewers, loading: loading3 } = useFetch(
+    `${process.env.REACT_APP_BASE_URL}/interviewer`
+  );
   const validationSchema = Yup.object({
     title: Yup.string().required("Title is required"),
     dateTime: Yup.date().nullable().required(" Date and Time is Required"),
@@ -29,40 +33,8 @@ const EditInterview = () => {
       // .of(Yup.string(), "Invalid option selected.")
       .required("Please select at least one option."),
   });
-  const getData = async () => {
-    try {
-      const response1 = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/applicants`
-      );
-      const response2 = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/interviewer`
-      );
-      const response3 = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/interview/` + id
-      );
-      setApplicants(response1.data);
-      setInterviewers(response2.data);
-      setData(response3.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
   const navigate = useNavigate();
-  const putData = async (data) => {
-    try {
-      await axios
-        .put(`${process.env.REACT_APP_BASE_URL}/interview/` + id, data)
-        .then((res) => {
-          alert("Interview Edited Sucessfully");
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { putData } = usePut();
   const onSubmit = (values) => {
     const date = moment(values.dateTime).format("YYYY-MM-DD HH:mm");
 
@@ -72,11 +44,15 @@ const EditInterview = () => {
       interviewers: values.interviewers,
       applicants: values.applicants,
     };
-    putData(data);
+    putData(
+      `${process.env.REACT_APP_BASE_URL}/interview/`,
+      id,
+      data,
+      "Interview Edited"
+    );
     navigate("..");
-    console.log(data);
   };
-  if (loading) {
+  if (loading1 || loading2 || loading3) {
     return (
       <Container>
         <div className="d-flex justify-content-center mt-5 ">

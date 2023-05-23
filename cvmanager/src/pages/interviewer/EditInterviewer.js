@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import FormTopBar from "../../component/formcomponents/FormTopBar";
 import { useNavigate } from "react-router-dom";
 import FormControl from "../../component/formcomponents/FormControl";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
+import usePut from "../../utilities/usePut";
+import useFetch from "../../utilities/useFetch";
 const levelOptions = [
   { key: "Junior", value: "Junior" },
   { key: "Mid", value: "Mid" },
@@ -21,22 +22,10 @@ const validationSchema = Yup.object({
 
 const EditInterviewer = () => {
   const { id } = useParams();
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const getData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/interviewer/` + id
-      );
-      setData(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  const { putData } = usePut();
+  const { datas: data, loading } = useFetch(
+    `${process.env.REACT_APP_BASE_URL}/interviewer/${id}`
+  );
   const navigate = useNavigate();
   if (loading) {
     return (
@@ -53,11 +42,12 @@ const EditInterviewer = () => {
     };
 
     const onSubmit = (values) => {
-      axios
-        .put(`${process.env.REACT_APP_BASE_URL}/interviewer/` + id, values)
-        .then((res) => {
-          alert("Applicant Edited Sucessfully");
-        });
+      putData(
+        `${process.env.REACT_APP_BASE_URL}/interviewer/`,
+        id,
+        values,
+        "Applicant Edited Sucessfully"
+      );
       navigate("..");
     };
     return (

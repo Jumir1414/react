@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import FormTopBar from "../../component/formcomponents/FormTopBar";
 import { useNavigate } from "react-router-dom";
 import FormControl from "../../component/formcomponents/FormControl";
-import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
 import usePost from "../../utilities/usePost";
+import useFetch from "../../utilities/useFetch";
 const initialValues = {
   applicant: [],
   title: "",
@@ -26,22 +26,9 @@ const validationSchema = Yup.object({
 
 const CreateAT = () => {
   const { postData } = usePost();
-  const [applicants, setApplicants] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const getData = async () => {
-    try {
-      const response1 = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/applicants`
-      );
-      setApplicants(response1.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  const { datas: applicants, loading } = useFetch(
+    `${process.env.REACT_APP_BASE_URL}/applicants`
+  );
   const navigate = useNavigate();
   const onSubmit = (values) => {
     const assessmentData = {

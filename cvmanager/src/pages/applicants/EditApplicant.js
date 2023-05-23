@@ -128,7 +128,7 @@ const EditApplicant = () => {
       data,
       "Applicant Edited Sucessfully"
     );
-    navigate("..");
+    navigate(-1);
   };
   if (loading) {
     return (

@@ -52,17 +52,6 @@ const CreateInterview = () => {
     getData();
   }, []);
   const navigate = useNavigate();
-  // const postData = async (data) => {
-  //   try {
-  //     await axios
-  //       .post(`${process.env.REACT_APP_BASE_URL}/interview`, data)
-  //       .then((res) => {
-  //         alert("Interview created Sucessfully");
-  //       });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
   const { postData } = usePost();
   const onSubmit = (values) => {
     console.log(values.dateTime);
@@ -79,7 +68,7 @@ const CreateInterview = () => {
       data,
       "Interview Created"
     );
-    navigate("..");
+    navigate(-1);
   };
   const maxDate = new Date();
   if (loading) {

@@ -40,7 +40,7 @@ const EditAT = () => {
       assessmentData,
       "Assessment Test Edited Sucessfully"
     );
-    navigate("..");
+    navigate(-1);
   };
   if (loading || loading2) {
     return (

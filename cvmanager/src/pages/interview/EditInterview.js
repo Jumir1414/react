@@ -50,7 +50,7 @@ const EditInterview = () => {
       data,
       "Interview Edited"
     );
-    navigate("..");
+    navigate(-1);
   };
   if (loading1 || loading2 || loading3) {
     return (
@@ -73,7 +73,7 @@ const EditInterview = () => {
       return (applicantOptions = [
         ...applicantOptions,
         {
-          label: applicant.applicantName,
+          label: applicant.fullName,
           value: applicant.id,
         },
       ]);

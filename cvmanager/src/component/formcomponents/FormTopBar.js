@@ -8,7 +8,8 @@ const FormTopBar = ({ header }) => {
       <Col md={1} style={{ width: "2rem" }}>
         <div>
           <Link
-            to=".."
+            as="button"
+            to={-1}
             style={{
               textDecoration: "none",
               fontSize: "1.5rem",

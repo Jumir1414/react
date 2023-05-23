@@ -42,7 +42,7 @@ const CreateAT = () => {
       assessmentData,
       "Assessment has been created"
     );
-    navigate("..");
+    navigate(-1);
   };
 
   if (loading) {

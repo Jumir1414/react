@@ -203,6 +203,18 @@
       "experience": "king of hell",
       "expectedSalary": "10000",
       "references": "gydomex@mailinator.com"
+    },
+    {
+      "id": "e5d216e7-31bd-4d31-9bf9-be7aa0de2342",
+      "fullName": "Annda Ram mulapati",
+      "email": "mula@gmail.com",
+      "mobileNumber": "9860111888",
+      "status": "Interviewing",
+      "technology": "DotNet",
+      "position": "Junior",
+      "experience": "1 year as junior devops engineer",
+      "expectedSalary": "20000",
+      "references": "gydomex@mailinator.com"
     }
   ],
   "applicantsList": [
@@ -424,10 +436,6 @@
         {
           "label": "Margarita Turbern",
           "value": "e1740334-fecb-4bec-b24e-92e10593a392"
-        },
-        {
-          "label": "Casandra Varden",
-          "value": "918aa05d-09c6-4cb1-83e3-7cab3465dc16"
         }
       ],
       "id": 2
@@ -494,10 +502,6 @@
         {
           "label": "Julee Carletti",
           "value": "72faf3b4-1f7e-4f17-ae9f-4585f3439031"
-        },
-        {
-          "label": "Casandra Varden",
-          "value": "918aa05d-09c6-4cb1-83e3-7cab3465dc16"
         }
       ],
       "id": 4
@@ -546,6 +550,48 @@
       "title": "Qa assessment ",
       "evaluation": "very good",
       "id": 4
+    },
+    {
+      "applicantName": "Sal Carling",
+      "applicantId": "341fe7a3-d8db-43a6-b3a0-db38b53c0f7e",
+      "title": "DevOps assessment",
+      "evaluation": "very good",
+      "id": 5
+    },
+    {
+      "applicantName": "Casandra Varden",
+      "applicantId": "918aa05d-09c6-4cb1-83e3-7cab3465dc16",
+      "title": "Support Engineer test",
+      "evaluation": "very good",
+      "id": 6
+    },
+    {
+      "applicantName": "Reeva Brehaut",
+      "applicantId": "f74b70d6-5c49-401f-aabe-935c515d0908",
+      "title": "React js assessment",
+      "evaluation": "very good",
+      "id": 7
+    },
+    {
+      "applicantName": "Margarita Turbern",
+      "applicantId": "e1740334-fecb-4bec-b24e-92e10593a392",
+      "title": "Amplitude Test",
+      "evaluation": "very good",
+      "id": 8
+    },
+    {
+      "applicantName": "Devondra Brende",
+      "applicantId": "88fb7030-0ea6-4116-8318-076f75285651",
+      "title": "Amplitude Test",
+      "evaluation": "very bad",
+      "id": 9
+    },
+    {
+      "applicantName": "Aubrey Redfern",
+      "applicantId": "1945a5f9-0c41-49a5-afa8-76240be8bc5f",
+      "title": "Devops",
+      "evaluation": "very good",
+      "id": 10
     }
   ]
 }

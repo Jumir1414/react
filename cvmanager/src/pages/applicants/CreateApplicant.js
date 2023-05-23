@@ -145,7 +145,7 @@ const CreateApplicant = () => {
     //   cv: values.cv,
     // };
     // console.log(data);
-    navigate("..");
+    navigate(-1);
   };
   return (
     <Container className="mt-2" fluid>

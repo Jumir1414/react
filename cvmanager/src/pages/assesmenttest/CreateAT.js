@@ -18,9 +18,11 @@ const initialValues = {
 const validationSchema = Yup.object({
   applicant: Yup.array()
     .max(1, "Please select only one option.")
-    // .of(Yup.string(), "Invalid option selected.")
+    .min(1, "plz select 1")
     .required("Please select at least one option."),
-  evaluation: Yup.string(),
+  evaluation: Yup.string().required("required"),
+  title: Yup.string().required("required"),
+
   // document: Yup.mixed().nullable().required("Document is required"),
 });
 

@@ -2,7 +2,6 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import { Field, ErrorMessage } from "formik";
 import "react-datepicker/dist/react-datepicker.css";
-import moment from "moment/moment";
 import TextError from "./TextError";
 
 const Date = (props) => {

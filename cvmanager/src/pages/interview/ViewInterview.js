@@ -1,31 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
 import { Container, Row, Col } from "react-bootstrap";
 import FormTopBar from "../../component/formcomponents/FormTopBar";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import useFetch from "../../utilities/useFetch";
 import { Link } from "react-router-dom";
-
+import ErrorMsg from "../../component/ErrorMsg";
+import moment from "moment/moment";
 const ViewInterview = () => {
   const { id } = useParams();
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const getData = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/interview/` + id
-      );
-      setData(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  const {
+    datas: data,
+    loading,
+    error,
+  } = useFetch(`${process.env.REACT_APP_BASE_URL}/interview/${id}`);
 
   if (loading) {
     return (
@@ -35,7 +25,13 @@ const ViewInterview = () => {
         </div>
       </Container>
     );
+  }
+  if (error) {
+    return <ErrorMsg msg={error.message} />;
   } else {
+    const time = moment(data.date).format("hh:mm a");
+    const date = moment(data.date).format("DD/MM/YYYY");
+
     return (
       <Container className="mt-2" fluid>
         <Row>
@@ -57,17 +53,25 @@ const ViewInterview = () => {
             <Card.Body style={{ width: "100%" }}>
               <Row style={{ width: "100%" }}>
                 <Card.Title>
-                  Interview Title : {data.title.toUpperCase()}
+                  <span className="dataLabel">Interview Title :</span>{" "}
+                  {data.title.toUpperCase()}
                 </Card.Title>
               </Row>
               <Row className="mt-2" style={{ width: "100%" }}>
-                <Card.Title>Date and time : {data.date}</Card.Title>
+                <Card.Title>
+                  <span className="dataLabel">Date :</span> {date}
+                </Card.Title>
+              </Row>
+              <Row className="mt-2" style={{ width: "100%" }}>
+                <Card.Title>
+                  <span className="dataLabel">Time :</span> {time}
+                </Card.Title>
               </Row>
               <Row className="mt-2" style={{ width: "100%" }}>
                 <Col>
                   <Card style={{ width: "18rem" }}>
                     <Card.Header className="text-center ">
-                      <h5>Applicant's No - {data.applicants.length}</h5>
+                      <h5>Total Applicants {data.applicants.length}</h5>
                     </Card.Header>
                     <ListGroup variant="flush">
                       {data.applicants.map((applicant) => (

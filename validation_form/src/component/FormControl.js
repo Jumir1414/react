@@ -5,7 +5,7 @@ import Select from "./Select";
 import Radio from "./Radio";
 import Date from "./DatePicker";
 import MultipleSelect from "./MultipleSelect";
-
+import TextEditor from "./TextEditor";
 const FormControl = (props) => {
   const { control, ...rest } = props;
   switch (control) {
@@ -23,6 +23,9 @@ const FormControl = (props) => {
 
     case "multi":
       return <MultipleSelect {...rest} />;
+
+    case "texteditor":
+      return <TextEditor {...rest} />;
 
     default:
       return null;

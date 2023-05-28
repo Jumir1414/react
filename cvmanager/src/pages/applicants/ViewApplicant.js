@@ -53,7 +53,7 @@ const ViewApplicant = () => {
         }
       });
     });
-    console.log(applicantInterview);
+
     return (
       <Container className="mt-2" fluid>
         <Row>
@@ -63,60 +63,149 @@ const ViewApplicant = () => {
           <Col className="d-flex justify-content-end">
             <Link
               to={`../editapplicant/${id}`}
-              className="btn btn-sm d-flex align-items-center btn-success"
+              className="btn btn-sm d-flex align-items-center btn-success text-light"
             >
               Edit
             </Link>
           </Col>
         </Row>
-        <Row className="mt-2">
-          <Col sm="4" className="text-center">
-            <Card>
-              <Card.Header as="h5" style={{ width: "100%" }}>
-                {datas.fullName}
-              </Card.Header>
-              <Card.Body>
-                <Card.Title>
-                  <span>Technology: {datas.technology}</span>
-                </Card.Title>
-                <Card.Text>Applied Position: {datas.position}</Card.Text>
-                <Card.Text>
-                  Expected Salary: Rs {datas.expectedSalary}
-                </Card.Text>
-                <Card.Text>Reference: {datas.references}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col sm="6" className="text-center">
+        <Row className="mt-3 mb-3">
+          <Col className="text-center" sm="12">
             <Card style={{ height: "100%" }}>
-              <Card.Header as="h5" style={{ width: "100%" }}>
-                Personal Details{" "}
+              <Card.Header
+                className="textCard"
+                as="h5"
+                style={{ width: "100%" }}
+              >
+                Status{" "}
               </Card.Header>
-              <Card.Body style={{ width: "100%" }}>
-                <Card.Title>
-                  <span>Name :{datas.fullName}</span>
-                </Card.Title>
-                <Card.Text>Email: {datas.email}</Card.Text>
-                <Card.Text>Phone :{datas.mobileNumber}</Card.Text>
-                <Card.Text>Experience:{datas.experience} </Card.Text>
+              <Card.Body className="justify-content-center w-100">
+                <div className="text-center  ">
+                  <Status data={datas.status} />
+                </div>
               </Card.Body>
             </Card>
           </Col>
         </Row>
-        <Row className="mt-3 ">
-          <Col className="text-center" sm="6">
-            <Card style={{ height: "100%" }}>
-              <Card.Header as="h5" style={{ width: "100%" }}>
-                Status{" "}
+        <Row className="mt-2">
+          <Col sm="6" className="text-left">
+            <Card>
+              <Card.Header
+                className="textCard"
+                as="h5"
+                style={{ width: "100%" }}
+              >
+                {datas.fullName}
               </Card.Header>
               <Card.Body>
-                <Status data={datas.status} />
+                <Card.Text>
+                  <span className="dataLabel">Technology:</span>{" "}
+                  {datas.technology}
+                </Card.Text>
+                <Card.Text>
+                  <span className="dataLabel">Applied Position:</span>{" "}
+                  {datas.position}
+                </Card.Text>
+                <Card.Text>
+                  <span className="dataLabel">Expected Salary:</span> Rs{" "}
+                  {datas.expectedSalary}
+                </Card.Text>
+                <Card.Text>
+                  <span className="dataLabel">Reference:</span>{" "}
+                  {datas.references}
+                </Card.Text>
               </Card.Body>
+            </Card>
+          </Col>
+          <Col sm="6" className="text-left">
+            <Card style={{ height: "100%" }}>
+              <Card.Header
+                className="textCard"
+                as="h5"
+                style={{ width: "100%" }}
+              >
+                Personal Details{" "}
+              </Card.Header>
+              <Card.Body style={{ width: "100%" }}>
+                <Card.Text>
+                  <span>
+                    <span className="dataLabel">Name :</span>
+                    {datas.fullName}
+                  </span>
+                </Card.Text>
+                <Card.Text>
+                  <span className="dataLabel">Email:</span> {datas.email}
+                </Card.Text>
+                <Card.Text>
+                  <span className="dataLabel">Phone :</span>
+                  {datas.mobileNumber}
+                </Card.Text>
+                <Card.Text>
+                  <span className="dataLabel">Experience:</span>
+                  {datas.experience}{" "}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        <Row className="mt-3 mb-3">
+          <Col className="text-center" sm="6">
+            <Card style={{ height: "100%" }}>
+              <Card.Header
+                className="textCard"
+                as="h5"
+                style={{ width: "100%" }}
+              >
+                Interview
+              </Card.Header>
+              <ListGroup variant="flush">
+                {applicantInterview.length === 0 ? (
+                  <div className="mt-5">Not schedule </div>
+                ) : (
+                  applicantInterview.map((interview) => (
+                    <ListGroup.Item
+                      key={interview.id}
+                      className="d-flex justify-content-between "
+                    >
+                      <div>
+                        <span className="dataLabel">Title :</span>{" "}
+                        {interview.title}
+                      </div>
+                      <div>
+                        <Link
+                          to={`../../interview/editinterview/${interview.id}`}
+                          className="btn btn-sm ms-1 btn-success text-light"
+                        >
+                          Edit
+                        </Link>
+                        <Link
+                          to={`../../interview/viewinterview/${interview.id}`}
+                          className="btn btn-sm ms-1 btn-secondary"
+                        >
+                          View
+                        </Link>
+                      </div>
+                    </ListGroup.Item>
+                  ))
+                )}
+                <div className="mt-1 mb-1">
+                  <Link
+                    to="../../interview/createinterview"
+                    className="btn  ms-1 btn-success"
+                  >
+                    Create
+                  </Link>
+                </div>
+              </ListGroup>
             </Card>
           </Col>
           <Col className="text-center" sm="6">
             <Card style={{ height: "100%" }}>
-              <Card.Header as="h5" style={{ width: "100%" }}>
+              <Card.Header
+                className="textCard"
+                as="h5"
+                style={{ width: "100%" }}
+              >
                 Assessment Test
               </Card.Header>
               <ListGroup variant="flush">
@@ -128,11 +217,17 @@ const ViewApplicant = () => {
                       key={test.id}
                       className="d-flex justify-content-around "
                     >
-                      <div>Title : {test.title}</div>
-                      <div>Evaluation : {test.evaluation}</div>
+                      <div>
+                        <span className="dataLabel">Title : </span>
+                        {test.title}
+                      </div>
+                      <div>
+                        <span className="dataLabel">Evaluation :</span>{" "}
+                        {test.evaluation}
+                      </div>
                       <Link
                         to={`../../assesmenttest/editat/${test.id}`}
-                        className="btn btn-sm ms-1 btn-success"
+                        className="btn btn-sm ms-1 btn-success text-light"
                       >
                         Edit
                       </Link>
@@ -142,54 +237,9 @@ const ViewApplicant = () => {
                 <div className="mt-1 mb-1">
                   <Link
                     to="../../assesmenttest/createat"
-                    className="btn  ms-1 btn-secondary"
+                    className="btn  ms-1 btn-success"
                   >
-                    create
-                  </Link>
-                </div>
-              </ListGroup>
-            </Card>
-          </Col>
-        </Row>
-        <Row className="mt-3 mb-3">
-          <Col className="text-center" sm="6">
-            <Card style={{ height: "100%" }}>
-              <Card.Header as="h5" style={{ width: "100%" }}>
-                Interview
-              </Card.Header>
-              <ListGroup variant="flush">
-                {applicantInterview.length === 0 ? (
-                  <div className="mt-5">Not schedule </div>
-                ) : (
-                  applicantInterview.map((interview) => (
-                    <ListGroup.Item
-                      key={interview.id}
-                      className="d-flex justify-content-around "
-                    >
-                      <div>Title : {interview.title}</div>
-                      <div>
-                        <Link
-                          to={`../../interview/editinterview/${interview.id}`}
-                          className="btn btn-sm ms-1 btn-success"
-                        >
-                          Edit
-                        </Link>
-                        <Link
-                          to={`../../interview/viewinterview/${interview.id}`}
-                          className="btn btn-sm ms-1 btn-success"
-                        >
-                          View
-                        </Link>
-                      </div>
-                    </ListGroup.Item>
-                  ))
-                )}
-                <div className="mt-1 mb-1">
-                  <Link
-                    to="../../interview/createinterview"
-                    className="btn  ms-1 btn-secondary"
-                  >
-                    create
+                    Create
                   </Link>
                 </div>
               </ListGroup>

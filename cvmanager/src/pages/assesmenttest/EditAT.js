@@ -9,6 +9,7 @@ import Spinner from "react-bootstrap/Spinner";
 import { useParams } from "react-router-dom";
 import usePut from "../../utilities/usePut";
 import useFetch from "../../utilities/useFetch";
+import ErrorMsg from "../../component/ErrorMsg";
 const validationSchema = Yup.object({
   applicant: Yup.array()
     .max(1, "Please select only one option.")
@@ -20,9 +21,12 @@ const validationSchema = Yup.object({
 const EditAT = () => {
   const { id } = useParams();
   const { putData } = usePut();
-  const { datas: data, loading } = useFetch(
-    `${process.env.REACT_APP_BASE_URL}/assesmentTest/${id}`
-  );
+  const {
+    datas: data,
+    loading,
+    error,
+    refetch,
+  } = useFetch(`${process.env.REACT_APP_BASE_URL}/assesmentTest/${id}`);
   const { datas: applicants, loading: loading2 } = useFetch(
     `${process.env.REACT_APP_BASE_URL}/applicants`
   );
@@ -49,6 +53,18 @@ const EditAT = () => {
           <Spinner animation="border" />
         </div>
       </Container>
+    );
+  }
+  if (error) {
+    return (
+      <div>
+        <ErrorMsg msg={error.message} />
+        <div className="text-center">
+          <button onClick={refetch} className="btn btn-primary ">
+            Reload
+          </button>
+        </div>
+      </div>
     );
   } else {
     let applicantOptions = [];
@@ -123,7 +139,7 @@ const EditAT = () => {
               <Row className="mt-2">
                 <Col sm="1">
                   <div className="text-center">
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit">Update</Button>
                   </div>
                 </Col>
               </Row>

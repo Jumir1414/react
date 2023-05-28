@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import usePut from "../../utilities/usePut";
 import useFetch from "../../utilities/useFetch";
+import ErrorMsg from "../../component/ErrorMsg";
 const levelOptions = [
   { key: "Intern", value: "Intern" },
   { key: "Junior", value: "Junior" },
@@ -70,12 +71,15 @@ const validationSchema = Yup.object({
 const EditApplicant = () => {
   const { id } = useParams();
   const { putData } = usePut();
-  const { datas: data, loading } = useFetch(
-    `${process.env.REACT_APP_BASE_URL}/applicants/${id}`
-  );
+  const {
+    datas: data,
+    loading,
+    error,
+    refetch,
+  } = useFetch(`${process.env.REACT_APP_BASE_URL}/applicants/${id}`);
   function splitFullName(fullName) {
     if (!fullName) {
-      return []; // Return an empty array if fullName is undefined or empty
+      return [];
     }
 
     var nameParts = fullName.trim().split(/\s+/);
@@ -137,6 +141,19 @@ const EditApplicant = () => {
           <Spinner animation="border" />
         </div>
       </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <div>
+        <ErrorMsg msg={error.message} />
+        <div className="text-center">
+          <button onClick={refetch} className="btn btn-primary ">
+            Reload
+          </button>
+        </div>
+      </div>
     );
   } else {
     return (

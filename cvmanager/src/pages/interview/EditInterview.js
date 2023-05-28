@@ -10,11 +10,15 @@ import Spinner from "react-bootstrap/Spinner";
 import { useParams } from "react-router-dom";
 import usePut from "../../utilities/usePut";
 import useFetch from "../../utilities/useFetch";
+import ErrorMsg from "../../component/ErrorMsg";
 const EditInterview = () => {
   const { id } = useParams();
-  const { datas: data, loading: loading1 } = useFetch(
-    `${process.env.REACT_APP_BASE_URL}/interview/${id}`
-  );
+  const {
+    datas: data,
+    loading: loading1,
+    error,
+    refetch,
+  } = useFetch(`${process.env.REACT_APP_BASE_URL}/interview/${id}`);
   const { datas: applicants, loading: loading2 } = useFetch(
     `${process.env.REACT_APP_BASE_URL}/applicants`
   );
@@ -26,11 +30,11 @@ const EditInterview = () => {
     dateTime: Yup.date().nullable().required(" Date and Time is Required"),
     applicants: Yup.array()
       .min(1, "Please select at least one option.")
-      // .of(Yup.string(), "Invalid option selected.")
+
       .required("Please select at least one option."),
     interviewers: Yup.array()
       .min(1, "Please select at least one option.")
-      // .of(Yup.string(), "Invalid option selected.")
+
       .required("Please select at least one option."),
   });
   const navigate = useNavigate();
@@ -59,6 +63,18 @@ const EditInterview = () => {
           <Spinner animation="border" />
         </div>
       </Container>
+    );
+  }
+  if (error) {
+    return (
+      <div>
+        <ErrorMsg msg={error.message} />
+        <div className="text-center">
+          <button onClick={refetch} className="btn btn-primary ">
+            Reload
+          </button>
+        </div>
+      </div>
     );
   } else {
     const initialValues = {
@@ -135,7 +151,7 @@ const EditInterview = () => {
               <Row className="mt-4">
                 <Col sm="1">
                   <div className="text-center">
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit">Update</Button>
                   </div>
                 </Col>
               </Row>

@@ -13,7 +13,7 @@ const Status = ({ data }) => {
     } else if (data === "Shortlisted") {
       setActiveStep(0);
     }
-  }, []);
+  }, [data]);
   if (data === "Blacklisted" || data === "Rejected") {
     return (
       <div className="text-center">

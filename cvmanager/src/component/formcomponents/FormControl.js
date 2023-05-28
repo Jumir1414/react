@@ -6,6 +6,7 @@ import File from "./File";
 import Date from "./Date";
 import TextArea from "./TextArea";
 import MultipleSelect from "./MultipleSelect";
+import TextEditor from "./TextEditor";
 
 const FormControl = (props) => {
   const { control, ...rest } = props;
@@ -30,6 +31,9 @@ const FormControl = (props) => {
 
     case "multi":
       return <MultipleSelect {...rest} />;
+
+    case "texteditor":
+      return <TextEditor {...rest} />;
 
     default:
       return null;

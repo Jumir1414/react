@@ -1,8 +1,9 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 const usePut = () => {
   const putData = (url, id, data, msg) => {
     axios.put(url + id, data).then((res) => {
-      alert(msg);
+      toast(msg);
     });
   };
   return { putData };

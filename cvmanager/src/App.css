@@ -77,8 +77,8 @@ h2 {
 
 .sidenav {
   padding: 14.5px;
-  background: var(--primary);
-  color: var(--bs-gray-400);
+  background: white;
+  color: black;
 
 }
 
@@ -100,15 +100,16 @@ h2 {
 
 nav a {
   text-decoration: none;
-  font-size: 1rem;
-  color: var(--bs-gray-400);
+  font-size: 1.3rem;
+  color: black;
+  margin: 0.5rem;
   padding: 6px;
-  border-radius: 4px;
+
 
 }
 
 nav a.active {
-  background-color: var(--bs-gray-400);
+
   color: var(--primary);
 }
 
@@ -126,34 +127,58 @@ nav a:hover {
   padding-left: 2px;
 }
 
+.searchcontainer {
+  position: relative;
+  width: 20rem;
+}
+
 .search {
+  display: flex;
+  align-items: center;
   border: 1px solid #5e6a75;
   background-color: white;
   border-radius: 10px;
-  height: 2.2rem;
-  width: 16rem;
+  height: 2.5rem;
+  width: 20rem;
   display: flex;
   gap: 0.5rem;
+  padding-left: 2px;
+  overflow: hidden;
+  margin-left: 6px;
 
 }
 
-.search-input {
+.Searchinput {
+  width: 90%;
   border: none;
   outline: none;
-  height: auto;
-  border-radius: 20px;
-  width: 14rem;
-}
-
-.search-btn {
-  background-color: var(--primary) !important;
-  border: none !important;
-  border-radius: 0 10px 10px 0 !important;
-  height: 2rem;
-
-
+  margin-left: -4px;
 
 }
+
+.searchicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10%;
+  color: #5e6a75;
+  font-size: large;
+  height: 100%;
+}
+
+.Searchresult {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 
 .fa-solid {
   display: flex;
@@ -176,4 +201,31 @@ nav a:hover {
 
 .rdt_Table {
   border-radius: 8px !important;
+}
+
+.action {
+  display: flex;
+
+}
+
+@media(max-width:1025px) {
+  .action {
+    flex-direction: column;
+  }
+}
+
+.dataLabel {
+  color: #d9353e;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.userimg {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+}
+
+.textCard {
+  font-family: Arial, Helvetica, sans-serif;
 }

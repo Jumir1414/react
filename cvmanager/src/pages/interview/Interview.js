@@ -11,6 +11,7 @@ import Table from "../../component/Table";
 import { Link } from "react-router-dom";
 import useFetch from "../../utilities/useFetch";
 import useDelete from "../../utilities/useDelete";
+import ErrorMsg from "../../component/ErrorMsg";
 const Interview = () => {
   const [lgShow, setLgShow] = useState(false);
   const localizer = momentLocalizer(moment);
@@ -26,14 +27,14 @@ const Interview = () => {
     handleClose();
 
     deleteData(
-      `${process.env.REACT_APP_BASE_URL}/interview/`,
-      uid,
+      `${process.env.REACT_APP_BASE_URL}/interview/${uid}`,
+
       "Applicant has been Deleted"
     );
     refetch();
   };
 
-  const { datas, loading, refetch } = useFetch(
+  const { datas, loading, error, refetch } = useFetch(
     `${process.env.REACT_APP_BASE_URL}/interview`
   );
 
@@ -52,8 +53,8 @@ const Interview = () => {
       selector: (row) => row.title,
     },
     {
-      name: "Date and Time",
-      selector: (row) => row.date,
+      name: "Date ",
+      selector: (row) => moment(row.date).format("DD/MM/YYYY"),
       sortable: true,
     },
     {
@@ -90,6 +91,18 @@ const Interview = () => {
           <Spinner animation="border" />
         </div>
       </Container>
+    );
+  }
+  if (error) {
+    return (
+      <div>
+        <ErrorMsg msg={error.message} />
+        <div className="text-center">
+          <button onClick={refetch} className="btn btn-primary ">
+            Reload
+          </button>
+        </div>
+      </div>
     );
   } else {
     let events = [];

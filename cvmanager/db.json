@@ -1,28 +1,16 @@
 {
   "applicants": [
     {
-      "fullName": "Sal Carling",
-      "email": "scarling4@ehow.com",
-      "mobileNumber": 8645891014,
-      "status": "Offered",
-      "technology": "DevOps",
-      "position": "Intern",
-      "experience": "Financial Advisor",
-      "expectedSalary": 50961.61,
-      "references": "scarling4@upenn.edu",
-      "id": "341fe7a3-d8db-43a6-b3a0-db38b53c0f7e"
-    },
-    {
-      "id": "88fb7030-0ea6-4116-8318-076f75285651",
-      "fullName": "Devondra Brende",
-      "mobileNumber": 1106980580,
+      "fullName": "Devondra Nath Brende",
       "email": "dbrende5@berkeley.edu",
-      "position": "Intern",
+      "mobileNumber": 1106980580,
       "status": "Shorlisted",
       "technology": "SupportEngineer",
+      "position": "Intern",
+      "experience": "Account Representative I",
       "expectedSalary": 10922.07,
       "references": "dbrende5@nyu.edu",
-      "experience": "Account Representative I"
+      "id": "88fb7030-0ea6-4116-8318-076f75285651"
     },
     {
       "id": "ca118b7c-7b39-4d40-89ba-29948072fce9",
@@ -73,40 +61,28 @@
       "experience": "VP Accounting"
     },
     {
-      "id": "d68356ad-6e02-4299-bafc-99512a9d8448",
       "fullName": "Llewellyn McNess",
-      "mobileNumber": 2524730493,
       "email": "lmcnessa@diigo.com",
-      "position": "Junior",
-      "status": "Shorlisted",
+      "mobileNumber": 2524730493,
+      "status": "Offered",
       "technology": "PHP/Laravel",
+      "position": "Junior",
+      "experience": "Dental Hygienist",
       "expectedSalary": 801802.9,
       "references": "lmcnessa@hexun.com",
-      "experience": "Dental Hygienist"
+      "id": "d68356ad-6e02-4299-bafc-99512a9d8448"
     },
     {
-      "id": "f74b70d6-5c49-401f-aabe-935c515d0908",
       "fullName": "Reeva Brehaut",
-      "mobileNumber": 9200089646,
       "email": "rbrehautc@pinterest.com",
-      "position": "mid",
+      "mobileNumber": 9200089646,
       "status": "Offered",
       "technology": "ReactJS",
+      "position": "Mid",
+      "experience": "Media Manager I",
       "expectedSalary": 529448.92,
       "references": "rbrehautc@squidoo.com",
-      "experience": "Media Manager I"
-    },
-    {
-      "id": "72faf3b4-1f7e-4f17-ae9f-4585f3439031",
-      "fullName": "Julee Carletti",
-      "mobileNumber": 8422482125,
-      "email": "jcarlettid@w3.org",
-      "position": "Junior",
-      "status": "Shorlisted",
-      "technology": "QA",
-      "expectedSalary": 170173.2,
-      "references": "jcarlettid@clickbank.net",
-      "experience": "Compensation Analyst"
+      "id": "f74b70d6-5c49-401f-aabe-935c515d0908"
     },
     {
       "id": "c4ec8dfa-97d3-424c-9c4b-777b76f919a0",
@@ -121,16 +97,16 @@
       "experience": "Librarian"
     },
     {
-      "id": "edc60ac3-77ae-4d46-a86a-9026103ed119",
       "fullName": "Melinde Haswall",
-      "mobileNumber": 2970879307,
       "email": "mhaswallf@sina.com.cn",
-      "position": "mid",
+      "mobileNumber": 2970879307,
       "status": "Hired",
       "technology": "SupportEngineer",
+      "position": "Mid",
+      "experience": "Senior Editor",
       "expectedSalary": 226341.87,
       "references": "mhaswallf@123-reg.co.uk",
-      "experience": "Senior Editor"
+      "id": "edc60ac3-77ae-4d46-a86a-9026103ed119"
     },
     {
       "id": "7ddbc318-4738-4fc9-a2a7-ee99abf400de",
@@ -214,6 +190,30 @@
       "position": "Junior",
       "experience": "1 year as junior devops engineer",
       "expectedSalary": "20000",
+      "references": "gydomex@mailinator.com"
+    },
+    {
+      "id": "7ed2c869-faae-42be-9194-6f2dc23e3e12",
+      "fullName": "jhamaka papara",
+      "email": "jhamka@gmail.com",
+      "mobileNumber": "7894561230",
+      "status": "Interviewing",
+      "technology": "NodeJS",
+      "position": "Mid",
+      "experience": "hero ",
+      "expectedSalary": "50000",
+      "references": "gydomex@mailinator.com"
+    },
+    {
+      "id": "e39a54e3-2705-4c19-9d6f-edb7973f92df",
+      "fullName": "Jumir Gosain",
+      "email": "jumir1414@gmail.com",
+      "mobileNumber": "9860117619",
+      "status": "Offered",
+      "technology": "SupportEngineer",
+      "position": "Mid",
+      "experience": "hahaha",
+      "expectedSalary": "100000",
       "references": "gydomex@mailinator.com"
     }
   ],
@@ -367,47 +367,6 @@
   ],
   "interview": [
     {
-      "title": " interview",
-      "date": "2023-05-25 00:00",
-      "interviewers": [
-        {
-          "label": "Monkey D luffy",
-          "value": "9f1a6a4f-ec7d-4942-883a-6ae8131de63b"
-        },
-        {
-          "label": "Naruto Uzumaki",
-          "value": "26ad1679-8847-4725-b4a6-e09136b51ed0"
-        }
-      ],
-      "applicants": [
-        {
-          "label": "Margarita Turbern",
-          "value": "e1740334-fecb-4bec-b24e-92e10593a392"
-        },
-        {
-          "label": "Casandra Varden",
-          "value": "918aa05d-09c6-4cb1-83e3-7cab3465dc16"
-        },
-        {
-          "label": "Llewellyn McNess",
-          "value": "d68356ad-6e02-4299-bafc-99512a9d8448"
-        },
-        {
-          "label": "Kaspar Metschke",
-          "value": "d37792e2-8f07-446d-8bb2-056d2067322b"
-        },
-        {
-          "label": "Reeva Brehaut",
-          "value": "f74b70d6-5c49-401f-aabe-935c515d0908"
-        },
-        {
-          "label": "Julee Carletti",
-          "value": "72faf3b4-1f7e-4f17-ae9f-4585f3439031"
-        }
-      ],
-      "id": 1
-    },
-    {
       "title": "FrontEnd interview",
       "date": "2023-05-23 10:00",
       "interviewers": [
@@ -466,7 +425,7 @@
       "id": 3
     },
     {
-      "title": "Frontend interview 2 ",
+      "title": "DevOp interview 2 ",
       "date": "2023-06-02 11:30",
       "interviewers": [
         {
@@ -505,19 +464,84 @@
         }
       ],
       "id": 4
+    },
+    {
+      "title": "Devops Interview",
+      "date": "2023-05-25 13:00",
+      "interviewers": [
+        {
+          "label": "Monkey D luffy",
+          "value": "9f1a6a4f-ec7d-4942-883a-6ae8131de63b"
+        },
+        {
+          "label": "Hero  lal",
+          "value": "91e4574e-3179-4181-8163-f40b03d10576"
+        }
+      ],
+      "applicants": [
+        {
+          "label": "Sal Carling",
+          "value": "341fe7a3-d8db-43a6-b3a0-db38b53c0f7e"
+        }
+      ],
+      "id": 5
+    },
+    {
+      "title": "Frontend",
+      "date": "2023-06-03 11:00",
+      "interviewers": [
+        {
+          "label": "Monkey D luffy",
+          "value": "9f1a6a4f-ec7d-4942-883a-6ae8131de63b"
+        },
+        {
+          "label": "Hero  lal",
+          "value": "91e4574e-3179-4181-8163-f40b03d10576"
+        }
+      ],
+      "applicants": [
+        {
+          "label": "Sal Carling",
+          "value": "341fe7a3-d8db-43a6-b3a0-db38b53c0f7e"
+        }
+      ],
+      "id": 6
+    },
+    {
+      "title": "hwa ",
+      "date": "2023-06-02 14:00",
+      "interviewers": [
+        {
+          "label": "Monkey D luffy",
+          "value": "9f1a6a4f-ec7d-4942-883a-6ae8131de63b"
+        },
+        {
+          "label": "Hero  lal",
+          "value": "91e4574e-3179-4181-8163-f40b03d10576"
+        }
+      ],
+      "applicants": [
+        {
+          "label": "Devondra Brende",
+          "value": "88fb7030-0ea6-4116-8318-076f75285651"
+        },
+        {
+          "label": "Margarita Turbern",
+          "value": "e1740334-fecb-4bec-b24e-92e10593a392"
+        },
+        {
+          "label": "Aubrey Redfern",
+          "value": "1945a5f9-0c41-49a5-afa8-76240be8bc5f"
+        },
+        {
+          "label": "Pris Marusyak",
+          "value": "ca118b7c-7b39-4d40-89ba-29948072fce9"
+        }
+      ],
+      "id": 7
     }
   ],
   "interviewer": [
-    {
-      "interviewerName": "Monkey D luffy",
-      "position": "Senior",
-      "id": "9f1a6a4f-ec7d-4942-883a-6ae8131de63b"
-    },
-    {
-      "interviewerName": "Hero  lal",
-      "position": "Senior",
-      "id": "91e4574e-3179-4181-8163-f40b03d10576"
-    },
     {
       "id": "43e178e9-d8e6-4822-a323-ca6648a24538",
       "interviewerName": "Mnkey D. Grap",
@@ -552,32 +576,11 @@
       "id": 4
     },
     {
-      "applicantName": "Sal Carling",
-      "applicantId": "341fe7a3-d8db-43a6-b3a0-db38b53c0f7e",
-      "title": "DevOps assessment",
-      "evaluation": "very good",
-      "id": 5
-    },
-    {
       "applicantName": "Casandra Varden",
       "applicantId": "918aa05d-09c6-4cb1-83e3-7cab3465dc16",
       "title": "Support Engineer test",
       "evaluation": "very good",
       "id": 6
-    },
-    {
-      "applicantName": "Reeva Brehaut",
-      "applicantId": "f74b70d6-5c49-401f-aabe-935c515d0908",
-      "title": "React js assessment",
-      "evaluation": "very good",
-      "id": 7
-    },
-    {
-      "applicantName": "Margarita Turbern",
-      "applicantId": "e1740334-fecb-4bec-b24e-92e10593a392",
-      "title": "Amplitude Test",
-      "evaluation": "very good",
-      "id": 8
     },
     {
       "applicantName": "Devondra Brende",
@@ -592,6 +595,22 @@
       "title": "Devops",
       "evaluation": "very good",
       "id": 10
+    },
+    {
+      "applicantName": "Margarita Turbern",
+      "applicantId": "e1740334-fecb-4bec-b24e-92e10593a392",
+      "title": "react js assessment",
+      "evaluation": "very good",
+      "id": 11
+    }
+  ],
+  "offerletter": [
+    {
+      "applicantName": "Devondra Brende",
+      "applicantId": "88fb7030-0ea6-4116-8318-076f75285651",
+      "textEditor": "<p>Devondra Brende</p><p>[Your Address]</p><p>[City, State, ZIP]</p><p>[Email Address]</p><p>[Phone Number]</p><p>[Date]</p><p>[Recipient's Name]</p><p>[Recipient's Address]</p><p>[City, State, ZIP]</p><p>Dear [Recipient's Name],</p><p>RE: Offer of Employment - [Position Title]</p><p>I am delighted to extend to you an offer of employment to join XYZ Company as a [Position Title]. We were impressed by your qualifications, experience, and achievements, and we believe that you will make a valuable contribution to our organization. We are excited to have you as part of our team.</p><p>The terms of your employment are outlined below:</p><ol><li>Position: [Position Title]</li><li>Department: [Department Name]</li><li>Reporting to: [Supervisor's Name]</li><li>Start Date: [Start Date]</li><li>Probationary Period: [Number of Months, if applicable]</li><li>Salary: [Annual Salary]</li><li>Benefits: You will be eligible for the company's standard benefits package, including health insurance, retirement plans, and vacation time. Details of these benefits will be provided to you separately.</li><li>Working Hours: [Working Hours per Week]</li><li>Location: [Work Location]</li></ol><p>Please note that your employment with XYZ Company will be subject to the successful completion of reference checks and any other background checks that may be required by the company.</p><p>To accept this offer, please sign and return a copy of this letter by [Date] to indicate your acceptance of the terms and conditions outlined above. Additionally, please provide any other documents or information required for the onboarding process.</p><p>If you have any questions or require further clarification, please feel free to contact me at [Your Phone Number] or [Your Email Address]. We look forward to welcoming you to XYZ Company and are excited about the prospect of working together.</p><p>Congratulations once again on your appointment. We are confident that your skills and expertise will contribute significantly to our success.</p><p>Yours sincerely,</p><p>[Your Name]</p><p>[Your Title]</p><p>XYZ Company</p>",
+      "remark": "for devondra",
+      "id": 2
     }
   ]
 }

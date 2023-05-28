@@ -82,7 +82,7 @@ const EditInterviewer = () => {
               <Row className="mt-4">
                 <Col sm="1">
                   <div className="text-center">
-                    <Button type="submit">Edit</Button>
+                    <Button type="submit">Update</Button>
                   </div>
                 </Col>
               </Row>

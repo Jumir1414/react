@@ -27,27 +27,29 @@ const FormContainer = () => {
   const initialValue = {
     email: "",
     name: "",
-    textarea: "",
-    selectOption: "",
-    radioOption: "",
-    date: null,
+    // textarea: "",
+    // selectOption: "",
+    // radioOption: "",
+    // date: null,
+    textEditor: "",
     // multiOptions: [],
   };
   const validationSchema = Yup.object({
     email: Yup.string().required("Required").email("Enter Valid Email"),
     name: Yup.string().required("Required"),
-    textarea: Yup.string().required("Required"),
-    selectOption: Yup.string().required("Required"),
-    radioOption: Yup.string().required("Required"),
-    date: Yup.date().nullable().required("Required"),
+    // textarea: Yup.string().required("Required"),
+    // selectOption: Yup.string().required("Required"),
+    // radioOption: Yup.string().required("Required"),
+    // date: Yup.date().nullable().required("Required"),
+    textEditor: Yup.string().required("requiored"),
     // multioptions: Yup.array()
     //   .min(1, "Please select at least one option.")
     //   .of(Yup.string(), "Invalid option selected.")
     //   .required("Please select at least one option."),
   });
 
-  const onSubmit =() => {
-    console.log("hello");
+  const onSubmit = (values) => {
+    console.log("hello", values);
   };
 
   return (
@@ -59,7 +61,7 @@ const FormContainer = () => {
       <Form>
         <FormControl control="input" name="name" type="text" label="Name" />
         <FormControl control="input" name="email" type="text" label="Email" />
-        <FormControl
+        {/* <FormControl
           control="textarea"
           name="textarea"
           type="text"
@@ -77,13 +79,13 @@ const FormContainer = () => {
           label="choose Option"
           options={radioOptions}
         />
-        <FormControl control="date" name="date" label="choose date" />
-        {/* <FormControl
-          control="multi"
-          name="multiOptions"
-          options={options}
-          label="multi"
-        /> */}
+        <FormControl control="date" name="date" label="choose date" /> */}
+        <FormControl
+          control="texteditor"
+          name="textEditor"
+          label="text Editor"
+        />
+
         <button type="submit">Submit</button>
       </Form>
     </Formik>

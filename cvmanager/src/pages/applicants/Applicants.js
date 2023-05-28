@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import HeaderBar from "../../component/HeaderBar";
 import Spinner from "react-bootstrap/Spinner";
-
+import ErrorMsg from "../../component/ErrorMsg";
 import { Link } from "react-router-dom";
 import Table from "../../component/Table";
 import Modal from "react-bootstrap/Modal";
@@ -21,7 +21,7 @@ const Applicants = () => {
     setShow(true);
   };
 
-  const { datas, loading, refetch } = useFetch(
+  const { datas, loading, error, refetch } = useFetch(
     `${process.env.REACT_APP_BASE_URL}/applicants`
   );
   const { deleteData } = useDelete();
@@ -49,7 +49,8 @@ const Applicants = () => {
     {
       when: (row) => row.status === "Blacklisted",
       style: {
-        backgroundColor: "red",
+        color: "red",
+        fontWeight: "bold",
       },
     },
   ];
@@ -57,8 +58,8 @@ const Applicants = () => {
     handleClose();
 
     deleteData(
-      `${process.env.REACT_APP_BASE_URL}/applicants/`,
-      uid,
+      `${process.env.REACT_APP_BASE_URL}/applicants/${uid}`,
+
       "Applicant has been Deleted"
     );
     refetch();
@@ -90,86 +91,98 @@ const Applicants = () => {
         <div className="action">
           <button
             onClick={(e) => handleShow(row.id)}
-            className="btn btn-sm  btn-danger"
+            className="btn btn-sm  btn-danger  "
           >
             Delete
           </button>
 
           <Link
             to={`editapplicant/${row.id}`}
-            className="btn btn-sm ms-1 btn-success"
+            className="btn btn-sm  btn-success text-light "
           >
             Edit
           </Link>
           <Link
             to={`viewapplicant/${row.id}`}
-            className="btn btn-sm  btn-secondary"
+            className="btn btn-sm  btn-secondary  "
           >
             View
           </Link>
-          {/* <Link>View</Link> */}
         </div>
       ),
     },
   ];
 
-  return (
-    <Container fluid>
-      <Modal
-        size="sm"
-        show={show}
-        onHide={handleClose}
-        aria-labelledby="example-modal-sizes-title-sm"
-      >
-        <Modal.Header>
-          <Modal.Title id="example-modal-sizes-title-sm">
-            Are You Sure To Delete??
-          </Modal.Title>
-        </Modal.Header>
-        {/* <Modal.Body>Are you sure?</Modal.Body> */}
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="danger" onClick={handleDelete}>
-            Confirm
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      <HeaderBar path={"createapplicant"} header={"Applicants List"} />
-      <div className="custom-data-table-container">
-        <Table
-          columns={columns}
-          data={search === "" ? datas : filterDatas}
-          conditionalRowStyles={conditionalRowStyles}
-          pagination
-          customStyles={tableCustomStyles}
-          highlightOnHover="true"
-          className="custom-data-table"
-          fixedHeader
-          fixedHeaderScrollHeight="400px"
-          progressPending={loading}
-          progressComponent={
-            <div className="mt-4">
-              <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
-            </div>
-          }
-          subHeader
-          subHeaderComponent={
-            <input
-              type="text"
-              placeholder="Search Here"
-              className="w-25 form-control"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          }
-        />
+  if (error) {
+    return (
+      <div>
+        <ErrorMsg msg={error.message} />
+        <div className="text-center">
+          <button onClick={refetch} className="btn btn-primary ">
+            Reload
+          </button>
+        </div>
       </div>
-    </Container>
-  );
+    );
+  } else {
+    return (
+      <Row>
+        <Modal
+          size="sm"
+          show={show}
+          onHide={handleClose}
+          aria-labelledby="example-modal-sizes-title-sm"
+        >
+          <Modal.Header>
+            <Modal.Title id="example-modal-sizes-title-sm">
+              Are You Sure To Delete??
+            </Modal.Title>
+          </Modal.Header>
+          {/* <Modal.Body>Are you sure?</Modal.Body> */}
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="danger" onClick={handleDelete}>
+              Confirm
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <HeaderBar path={"createapplicant"} header={"Applicants List"} />
+        <div className="custom-data-table-container">
+          <Table
+            columns={columns}
+            data={search === "" ? datas : filterDatas}
+            conditionalRowStyles={conditionalRowStyles}
+            pagination
+            customStyles={tableCustomStyles}
+            highlightOnHover="true"
+            className="custom-data-table"
+            fixedHeader
+            fixedHeaderScrollHeight="500px"
+            progressPending={loading}
+            progressComponent={
+              <div className="mt-4">
+                <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </Spinner>
+              </div>
+            }
+            subHeader
+            subHeaderComponent={
+              <input
+                type="text"
+                placeholder="Search Here"
+                className="w-25 form-control"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            }
+          />
+        </div>
+      </Row>
+    );
+  }
 };
 
 export default Applicants;
